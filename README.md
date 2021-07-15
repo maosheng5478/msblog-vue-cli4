@@ -1,6 +1,6 @@
 # msblog
 
-## Project setup
+## 🌱 Project setup
 ```
 yarn install
 ```
