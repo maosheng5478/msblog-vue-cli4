@@ -21,10 +21,12 @@ module.exports = {
     'quotes': ['error', 'single'], // 使用单引号
     'vue/no-unused-vars': 'error',
     'dot-notation':0,
+    'import/first':0,
     'vue/singleline-html-element-content-newline':0,
     'vue/html-closing-bracket-spacing': 'error',
     'vue/mustache-interpolation-spacing': 'error',
     'vue/html-indent': 'error',
+    'space-before-function-paren':0,
     'vue/max-attributes-per-line':["error", {
       "singleline": {
         "max": 3,
@@ -46,19 +48,5 @@ module.exports = {
     'vue/return-in-computed-property': 'error',
     // 强制校验 template 根节点
     'vue/valid-template-root': 'error',
-    // 强制校验 v-bind 指令
-    'vue/valid-v-bind': 'error',
-    // 强制校验 v-else-if 指令
-    'vue/valid-v-else-if': 'error',
-    // 强制校验 v-else 指令
-    'vue/valid-v-else': 'error',
-    // 强制校验 v-for 指令
-    'vue/valid-v-for': 'error',
-    // 强制校验 v-if 指令
-    'vue/valid-v-if': 'error',
-    // 强制校验 v-model 指令
-    'vue/valid-v-model': 'error',
-    // 强制校验 v-show 指令
-    'vue/valid-v-show': 'error',
   }
 }

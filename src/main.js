@@ -1,6 +1,15 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import 'element-plus/lib/theme-chalk/index.css';
 import router from './router';
 import store from './store';
+import { registerGlobComp } from '@components';
 
-createApp(App).use(store).use(router).mount('#app');
+(() => {
+  const app = createApp(App);
+  // Register global components
+  registerGlobComp(app);
+  app.use(store);
+  app.use(router);
+  app.mount('#app');
+})();
