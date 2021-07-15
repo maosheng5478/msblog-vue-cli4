@@ -37,7 +37,7 @@ module.exports = {
         "allowFirstLine": false
       }
     }],
-    'vue/html-self-closing': 'error',
+    'vue/html-self-closing': 1,
     // render 函数必须有一个返回值
     'vue/require-render-return': 'error',
     //保证 v-bind:key 和 v-for 指令成对出现
