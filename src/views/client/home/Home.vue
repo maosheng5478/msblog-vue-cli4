@@ -1,11 +1,31 @@
 <template>
-  <div class="home-banner" />
-  <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+  <div>
+    <div class="home-banner" />
+    <!--    <a href="https://imgtu.com/i/WmhmQA"><img src="https://z3.ax1x.com/2021/07/15/WmhmQA.jpg"  border="0"></a>-->
+    <language />
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+  </div>
 </template>
 
 <script>
+import Language from '../../../components/public/Language';
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: { Language }
 };
 </script>
 
@@ -14,7 +34,7 @@ export default {
   left: 0;
   right: 0;
   height: 100vh;
-  background: #49b1f5 url("https://imgtu.com/i/WmhmQA") no-repeat fixed center center;
+  background: #fff url("https://z3.ax1x.com/2021/07/15/WmhmQA.jpg") no-repeat fixed center center;
   text-align: center;
   color: #fff !important;
   animation: header-effect 1s;
