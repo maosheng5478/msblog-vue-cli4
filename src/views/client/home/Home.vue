@@ -1,31 +1,14 @@
 <template>
   <div>
     <div class="home-banner" />
-    <!--    <a href="https://imgtu.com/i/WmhmQA"><img src="https://z3.ax1x.com/2021/07/15/WmhmQA.jpg"  border="0"></a>-->
-    <language />
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
-    <br>hi<br>hi<br>hi<br>hi<br>hi<br>hi
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 </template>
 
 <script>
-import Language from '../../../components/public/Language';
 export default {
   name: 'Home',
-  components: { Language }
+  components: { }
 };
 </script>
 

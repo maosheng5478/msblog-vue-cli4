@@ -1,5 +1,6 @@
 export default {
   message: {
+    language: 'English',
     login: 'Login',
     logout: 'Logout',
     title: 'Title',
@@ -7,6 +8,8 @@ export default {
     categories: 'Categories',
     homepage: 'Homepage',
     tags: 'Tags',
-    archives: 'Archives'
+    archives: 'Archives',
+    about: 'About',
+    links: 'Links',
   }
 };

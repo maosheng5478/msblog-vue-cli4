@@ -1,14 +1,15 @@
 <template>
-  <el-radio
-    v-model="data.language"
-    label="zh"
-    border
-    @change="change('zh')">中文（简体）</el-radio>
-  <el-radio
-    v-model="data.language"
-    label="en"
-    border
-    @change="change('en')">English</el-radio>
+  <el-dropdown style="margin-left: 20px" @command="change">
+    <span class="el-dropdown-link">
+      {{ $t('message.language') }}<i class="el-icon-arrow-down el-icon--right" />
+    </span>
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item command="zh">中文</el-dropdown-item>
+        <el-dropdown-item command="en">English</el-dropdown-item>
+      </el-dropdown-menu>
+    </template>
+  </el-dropdown>
 </template>
 
 <script>
@@ -18,7 +19,7 @@ export default defineComponent({
   name: 'Language',
   setup() {
     const data = reactive({
-      language: '',
+      language: 'zh',
       title: '',
     });
     const { proxy } = getCurrentInstance();
