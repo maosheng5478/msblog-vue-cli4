@@ -1,7 +1,12 @@
 export default {
   message: {
-    login: 'login',
-    logout: 'logout',
-    title: 'title'
+    login: 'Login',
+    logout: 'Logout',
+    title: 'Title',
+    settings: 'Settings',
+    categories: 'Categories',
+    homepage: 'Homepage',
+    tags: 'Tags',
+    archives: 'Archives'
   }
 };
