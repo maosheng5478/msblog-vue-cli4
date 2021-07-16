@@ -19,6 +19,10 @@ yarn build
 ```
 yarn lint
 ```
-
+### Project environment version
+```
+node.js version: v14.16.0
+vue version: @vue/cli 4.5.13
+```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
