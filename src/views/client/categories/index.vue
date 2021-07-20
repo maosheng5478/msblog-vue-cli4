@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="c_banner">
-      <h1 class="el-icon-back">{{ $t('message.categories') }}</h1>
+      <p class="e_title">{{ $t('message.categories') }}</p>
     </div>
     this is categories
   </div>
@@ -15,9 +15,16 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .c_banner{
   height: 100vh;
-  background: #fff url('https://z3.ax1x.com/2021/07/20/WN4nPS.jpg') no-repeat center center;
+  overflow: hidden;
+  background: #fff url('https://z3.ax1x.com/2021/07/20/WN4nPS.jpg') left top no-repeat;
+  .e_title{
+    color: #fff;
+    display:block;
+    margin-top: 400px;
+  }
 }
+
 </style>
