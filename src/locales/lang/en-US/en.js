@@ -3,7 +3,7 @@ export default {
     language: 'English',
     login: 'Login',
     logout: 'Logout',
-    title: 'Title',
+    title: 'MS BOLG',
     settings: 'Settings',
     categories: 'Categories',
     homepage: 'Homepage',

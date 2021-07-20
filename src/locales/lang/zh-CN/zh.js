@@ -3,7 +3,7 @@ export default {
     language: '中文',
     login: '登录',
     logout: '退出登录',
-    title: '标 题',
+    title: 'MS BOLG',
     settings: '设置',
     categories: '分类',
     homepage: '首页',

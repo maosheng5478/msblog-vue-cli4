@@ -1,5 +1,5 @@
 <template>
-  <el-dropdown style="margin-left: 20px" @command="change">
+  <el-dropdown style="margin-left: 20px; color: rgba(255,255,255,0.9)" @command="change">
     <span class="el-dropdown-link">
       {{ $t('message.language') }}<i class="el-icon-arrow-down el-icon--right" />
     </span>

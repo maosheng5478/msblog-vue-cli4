@@ -151,6 +151,7 @@ export default defineComponent({
     }
     .change_text{
       margin-left: 20px;
+      color: rgba(255,255,255,0.9) ;
     }
   }
 }
