@@ -12,9 +12,19 @@ const routes = [
         path: '/home',
         name: 'home',
         component: () => import('../views/client/home/Home'),
+      },
+      {
+        path: '/categories',
+        name: 'categories',
+        component: () => import('../views/client/categories'),
       }
     ]
   },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: () => import('@/layout/admin')
+  }
 ];
 
 const router = createRouter({

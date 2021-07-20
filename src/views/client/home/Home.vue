@@ -1,15 +1,24 @@
 <template>
   <div>
     <div class="home-banner" />
+    <el-button @click="toAdmin"> to admin</el-button>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     yar<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 </template>
 
 <script>
+import router from '../../../router';
+
 export default {
   name: 'Home',
-  components: { }
+  components: { },
+  setup() {
+    function toAdmin() {
+      router.replace('/admin');
+    }
+    return { toAdmin };
+  },
 };
 </script>
 

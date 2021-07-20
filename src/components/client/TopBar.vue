@@ -13,7 +13,7 @@
       <div class="menu-title">
         <div>
           <router-link
-            to=""
+            to="/"
             class="text"
             :style="data.style">
             <UisHouseUser size="18px"  />
@@ -22,7 +22,7 @@
         </div>
         <div>
           <router-link
-            to=""
+            to="/categories"
             class="text"
             :style="data.style">
             <uis-apps size="18px" />
@@ -134,9 +134,10 @@ export default defineComponent({
       color: rgba(255,255,255,0.9);
       margin-top: 7px;
       margin-left: 20px;
+      text-decoration: none;
     }
-    .text>a{
-      text-decoraction: none;
+    .router-link-active{
+      text-decoration: none;
     }
     .text:hover{
       color: #49b1f5 !important;

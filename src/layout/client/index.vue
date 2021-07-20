@@ -29,7 +29,7 @@ export default defineComponent({
       if (data.opacity > 0.85) {
         data.opacity = 0.85;
       }
-      data.style = { background: 'rgba(255, 255, 255,${data.opacity})' };
+      data.style = { background: `rgba(255, 255, 255,${data.opacity})` };
     };
     window.addEventListener('scroll', handleWindowScroll);
     onMounted({
@@ -54,7 +54,6 @@ export default defineComponent({
     }
   }
   .c_main{
-    background-color: antiquewhite;
     padding: 0;
   }
 }
