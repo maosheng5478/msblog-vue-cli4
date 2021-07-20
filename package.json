@@ -12,6 +12,7 @@
     "@iconscout/vue-unicons-solid": "^0.0.2",
     "compression-webpack-plugin": "^5.0.0",
     "core-js": "^3.6.5",
+    "echarts": "^5.1.2",
     "element-plus": "^1.0.2-beta.55",
     "vue": "^3.0.0",
     "vue-i18n": "^9.1.7",
