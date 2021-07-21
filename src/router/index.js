@@ -32,4 +32,9 @@ const router = createRouter({
   routes
 });
 
+router.afterEach((to, from, next) => {
+  document.querySelector('body').setAttribute('style', 'overflow: auto !important;');
+  window.scrollTo(0, 0);
+});
+
 export default router;
