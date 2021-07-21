@@ -13,7 +13,5 @@ import { setupI18n } from './locales';
   registerGlobComp(app);
   // Multilingual configuration
   setupI18n(app);
-  app.use(store);
-  app.use(router);
-  app.mount('#app');
+  app.use(store).use(router).mount('#app');
 })();

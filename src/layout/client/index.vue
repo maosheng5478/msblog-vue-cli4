@@ -1,14 +1,14 @@
 <template>
   <el-container class="container">
+    <ul class="bg-bubbles">
+      <li v-for="(item, index) in data.bubbles" :key="index" />
+    </ul>
     <el-header class="c_header" :style="data.style">
       <top-bar class="header_main" />
     </el-header>
     <el-main class="c_main">
       <el-backtop visibility-height="5" />
-      <router-view style="z-index: 999" />
-      <ul class="bg-bubbles">
-        <li v-for="(item, index) in data.bubbles" :key="index" />
-      </ul>
+      <router-view />
     </el-main>
     <el-footer class="c_footer">
       <Footer />

@@ -23,7 +23,15 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: () => import('@/layout/admin')
+    component: () => import('@/layout/admin'),
+    redirect: '/admin/dashboard',
+    children: [
+      {
+        path: '/admin/dashboard',
+        name: 'dashboard',
+        component: () => import('../views/admin/dashboard')
+      },
+    ]
   }
 ];
 

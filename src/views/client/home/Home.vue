@@ -1,13 +1,7 @@
 <template>
   <div>
     <div class="home-banner" />
-    <el-button @click="toAdmin"> to admin</el-button>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    yar<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    yar<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    yar<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <el-button @click="toAdmin" style="position: sticky"> to admin</el-button>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     yar<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>

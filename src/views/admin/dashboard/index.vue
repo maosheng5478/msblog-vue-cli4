@@ -1,14 +1,23 @@
 <template>
   <div>this is admin home page</div>
+  <br><br><br><br><br><br><br><br><br>hi
+  <br><br><br><br><br><br><br><br><br>hi
+  <br><br><br><br><br><br><br><br><br>hi
+  <br><br><br><br><br><br><br><br><br>hi
+  <br><br><br><br><br><br><br><br><br>hi
+  <br><br><br><br><br><br><br><br><br>hi
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import { defineComponent, reactive } from 'vue';
 
 export default defineComponent({
-  name: 'AdminHome',
+  name: 'Dashboard',
   setup() {
-
+    const data = reactive({});
+    return {
+      data,
+    };
   },
 });
 </script>
