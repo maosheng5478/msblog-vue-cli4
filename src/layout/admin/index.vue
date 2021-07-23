@@ -1,19 +1,19 @@
 <template>
   <el-container>
-    <el-header class="admin_header">
+    <el-header class="top">
       <admin-header />
     </el-header>
     <el-container :class="{'folded':data.folded}">
-      <el-aside class="admin_aside">
+      <el-aside class="ly_left">
         <span class="btn_folded" @click="data.folded = !data.folded">
           <i :class="data.folded ? 'el-icon-s-fold' : 'el-icon-s-unfold'" style="color: #888" />
         </span>
       </el-aside>
       <el-container>
-        <el-main class="admin_main">
+        <el-main class="ly_main">
           <router-view />
         </el-main>
-        <el-footer class="admin_footer">
+        <el-footer class="ly_footer">
           Copyright@2020-2021 by MS
         </el-footer>
       </el-container>
@@ -30,7 +30,7 @@ export default defineComponent({
   name: 'AdminLayout',
   setup() {
     const data = reactive({
-      folded: true,
+      folded: false,
     });
     return { data };
   }
@@ -38,7 +38,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.admin_header{
+@import "src/style/constant";
+.top{
   background-color: #e4e7ed;
   margin: 0;
   padding: 0;
@@ -50,26 +51,26 @@ export default defineComponent({
     text-align: center;
   }
 }
-.admin_main{
+.ly_main{
   padding: 0;
-  margin-left: 245px;
+  margin-left: #{$admin_aside_width};
   background-color: #888888;
-  margin-top: 60px;
+  margin-top: #{$admin_header_height};
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;
 }
-.admin_aside{
+.ly_left{
   position: fixed;
-  width: 245px !important;
-  top: 60px;
+  width: #{$admin_aside_width} !important;
+  top: #{$admin_header_height};
   height: calc(100vh - 60px);
   background-color: #fff;
   transition: width 0.4s;
   -webkit-transition: width 0.4s;
 }
-.admin_footer{
+.ly_footer{
   padding: 0;
-  margin-left: 245px;
+  margin-left: #{$admin_aside_width};
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;
 }
@@ -85,13 +86,13 @@ export default defineComponent({
   background-color: #e4e7ed;
   cursor: pointer;
 }
-.folded .admin_main{
+.folded .ly_main{
   margin-left: 64px;
 }
-.folded .admin_aside{
+.folded .ly_left{
   width: 64px !important;
 }
-.folded .admin_footer{
+.folded .ly_footer{
   margin-left: 64px;
 }
 </style>
