@@ -27,6 +27,22 @@
           />
         </el-form-item>
         <el-form-item>
+          <el-row justify="space-around">
+            <el-col :span="14">
+              <el-input />
+            </el-col>
+            <el-col :span="10">
+              <el-avatar
+                shape="square"
+                style="width: 80%;background-color: white"
+                src="https://empty"
+                @error="handleArithmetic">
+                <img :src="data.imgSrc"  alt="" @click="handleArithmetic">
+              </el-avatar>
+            </el-col>
+          </el-row>
+        </el-form-item>
+        <el-form-item>
           <el-row :gutter="24" justify="space-around">
             <el-col :span="11">
               <el-button type="primary" class="btn_bg" @click="handleLogin">
@@ -51,8 +67,9 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 import { loginByPwd } from '../../../api/login';
+import { getArithmetic } from '../../../api/code';
 
 export default defineComponent({
   name: 'Login',
@@ -71,6 +88,8 @@ export default defineComponent({
         password: '',
       },
       loading: false,
+      imgLoad: true,
+      imgSrc: '',
     });
     const handleLogin = function () {
       loginByPwd(data.form).then((res) => {
@@ -80,9 +99,19 @@ export default defineComponent({
         console.log(res);
       });
     };
+    const handleArithmetic = function() {
+      getArithmetic().then((res) => {
+        data.imgSrc = res.data.img;
+        return false;
+      }).catch(() => { return true; });
+    };
+    onMounted(() => {
+      handleArithmetic();
+    });
     return {
       data,
       handleLogin,
+      handleArithmetic,
     };
   },
 });
