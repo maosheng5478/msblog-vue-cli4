@@ -1,9 +1,10 @@
 export default {
   message: {
     language: 'English',
-    login: 'Login',
+    login: 'Sign In',
+    register: 'Register',
     logout: 'Logout',
-    title: 'MS BOLG',
+    title: 'MS BLOG',
     settings: 'Settings',
     categories: 'Categories',
     homepage: 'Homepage',
@@ -11,5 +12,8 @@ export default {
     archives: 'Archives',
     about: 'About',
     links: 'Links',
+    back: 'Back',
+    account: 'Account',
+    password: 'Password',
   }
 };

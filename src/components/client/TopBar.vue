@@ -3,8 +3,8 @@
     <div class="center_container">
       <div class="right_title">
         <router-link
-          to="/"
-          class="text"
+          to="/home"
+          class="title"
           :style="data.style"
           tag="span">
           {{ $t(`message.title`) }}
@@ -58,7 +58,7 @@
         </div>
         <div>
           <router-link
-            to=""
+            to="/login"
             class="text"
             :style="data.style">
             <i class="el-icon-user-solid" />
@@ -130,6 +130,13 @@ export default defineComponent({
       }
     }
     .text{
+      text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
+      color: rgba(255,255,255,0.9);
+      margin-top: 7px;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+    .title{
       text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
       color: rgba(255,255,255,0.9);
       margin-top: 7px;

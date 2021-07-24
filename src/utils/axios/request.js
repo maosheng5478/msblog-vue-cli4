@@ -10,6 +10,7 @@ service.interceptors.request.use(
   config => {
     config.headers['Content-Type'] = 'application/json;charset=UTF-8';
     config.data = JSON.stringify(config.data);
+    console.log(config.data);
     // 获取后端传来的token
     config.headers['token'] = 'token';
     return config;

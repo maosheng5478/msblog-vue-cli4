@@ -17,7 +17,12 @@ const routes = [
         path: '/categories',
         name: 'categories',
         component: () => import('../views/client/categories'),
-      }
+      },
+      {
+        path: '/login',
+        name: 'Login',
+        component: () => import('../views/client/login'),
+      },
     ]
   },
   {

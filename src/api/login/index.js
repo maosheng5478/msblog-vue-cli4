@@ -9,13 +9,13 @@ export function loginByPwd(params) {
   return request({
     url: Api.login,
     method: 'post',
-    params,
+    data: params,
   });
 }
 export function logout(params) {
   return request({
     url: Api.logout,
     method: 'get',
-    params,
+    data: params,
   });
 }

@@ -64,7 +64,7 @@ export default defineComponent({
     }
   }
   .c_main{
-    background-color: #42b983;
+    background-color: rgba(66, 185, 131, 0.71);
     padding: 0;
   }
   .c_footer{
@@ -86,7 +86,7 @@ export default defineComponent({
       // 默认的气泡大小；
       width: 40px;
       height: 40px;
-      background-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(255, 255, 255, 0.18);
       list-style: none;
       // 使用自定义动画使气泡渐现、上升和翻滚；
       animation: square 15s infinite;
@@ -111,7 +111,7 @@ export default defineComponent({
         width: 60px;
         height: 60px;
         animation-duration: 8s;
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.34);
       }
       &:nth-child(5) {
         left: 70%;
@@ -121,7 +121,7 @@ export default defineComponent({
         width: 120px;
         height: 120px;
         animation-delay: 3s;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.38);
       }
       &:nth-child(7) {
         left: 32%;
@@ -142,7 +142,7 @@ export default defineComponent({
         height: 10px;
         animation-delay: 2s;
         animation-duration: 12s;
-        background-color: rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.45);
       }
       &:nth-child(10) {
         left: 85%;
