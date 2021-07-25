@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="overflow: hidden">
     <div id="paper">
       <el-form
         class="login-container"
@@ -29,16 +29,24 @@
         <el-form-item>
           <el-row justify="space-around">
             <el-col :span="14">
-              <el-input />
+              <el-input
+                v-model="data.form.code"
+                autocomplete="off"
+                :placeholder="$t('message.verificationCode')" />
             </el-col>
             <el-col :span="10">
-              <el-avatar
-                shape="square"
-                style="width: 80%;background-color: white"
-                src="https://empty"
-                @error="handleArithmetic">
-                <img :src="data.imgSrc"  alt="" @click="handleArithmetic">
-              </el-avatar>
+              <img
+                :src="data.imgSrc"
+                alt=""
+                @click="handleArithmetic"
+                v-if="!data.imgLoad">
+              <div v-else>
+                <img
+                  src="../../../assets/imgEmpty.png"
+                  alt=""
+                  ref="img"
+                  style="height: 40px">
+              </div>
             </el-col>
           </el-row>
         </el-form-item>
@@ -59,7 +67,9 @@
           </el-row>
         </el-form-item>
         <el-form-item>
-          <el-button icon="el-icon-back" type="text">{{ $t("message.back") }}</el-button>
+          <router-link to="/home">
+            <el-button icon="el-icon-back" type="text">{{ $t("message.back") }}</el-button>
+          </router-link>
         </el-form-item>
       </el-form>
     </div>
@@ -68,12 +78,17 @@
 
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
+import { useStore } from 'vuex';
 import { loginByPwd } from '../../../api/login';
 import { getArithmetic } from '../../../api/code';
+import { ElMessage } from 'element-plus';
+import { useI18n } from 'vue-i18n';
 
 export default defineComponent({
   name: 'Login',
   setup() {
+    const i18n = useI18n();
+    const store = useStore();
     const data = reactive({
       rules: {
         username: [
@@ -86,24 +101,41 @@ export default defineComponent({
       form: {
         username: '',
         password: '',
+        code: '',
+        key: '',
       },
       loading: false,
       imgLoad: true,
       imgSrc: '',
+      imgEmpty: require('../../../assets/empty_img.png'),
     });
     const handleLogin = function () {
+      data.form.key = store.getters.getCodeKey;
       loginByPwd(data.form).then((res) => {
         sessionStorage.setItem('username', res.username);
         sessionStorage.setItem('token', res.token);
-        sessionStorage.setItem('email', res.email);
-        console.log(res);
+        store.commit('setUserPhone', res.phone);
+        store.commit('setUsername', res.username);
+        store.commit('setUserEmail', res.email);
+        store.commit('setUserToken', res.token);
+        ElMessage.success({
+          message: i18n.t('message.login_success'),
+          type: 'success',
+          duration: 2 * 1000,
+        });
       });
     };
     const handleArithmetic = function() {
       getArithmetic().then((res) => {
-        data.imgSrc = res.data.img;
+        data.imgSrc = res.img;
+        data.imgLoad = false;
+        store.commit('setCodeKey', res.key);
         return false;
-      }).catch(() => { return true; });
+      }).catch((err) => {
+        data.imgLoad = true;
+        console.error(err);
+        return true;
+      });
     };
     onMounted(() => {
       handleArithmetic();
@@ -126,6 +158,7 @@ export default defineComponent({
   color: #fff !important;
   animation: header-effect 1s;
   margin: -5px 0;
+  overflow: hidden;
   .btn_bg{
     width: 100%;
     background: #505458;

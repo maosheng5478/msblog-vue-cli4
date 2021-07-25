@@ -15,5 +15,7 @@ export default {
     back: 'Back',
     account: 'Account',
     password: 'Password',
+    verificationCode: 'Verification Code',
+    login_success: 'Login success',
   }
 };

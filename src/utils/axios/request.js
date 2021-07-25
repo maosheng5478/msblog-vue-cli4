@@ -1,17 +1,20 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
+import store from '../../store';
 
 const service = axios.create({
   baseURL: 'api',
   timeout: 5 * 1000,
 });
 
+// 获取后端传来的token
+const token = store.getters.getToken;
+
 service.interceptors.request.use(
   config => {
     config.headers['Content-Type'] = 'application/json;charset=UTF-8';
     config.data = JSON.stringify(config.data);
-    // 获取后端传来的token
-    config.headers['token'] = 'token';
+    config.headers['token'] = token;
     return config;
   },
   error => {
@@ -28,19 +31,19 @@ service.interceptors.response.use(
           showClose: true,
           message: data.msg || 'error',
           type: 'error',
-          duration: 3 * 1000,
+          duration: 2 * 1000,
         });
         return reject(data.msg || 'error');
       } else {
-        return resolve(data);
+        return resolve(data.data);
       }
     });
   }, error => {
     ElMessage({
       showClose: true,
-      message: error.response.data.msg || 'error',
+      message: error.response.data.msg || 'server error',
       type: 'error',
-      duration: 3 * 1000,
+      duration: 2 * 1000,
     });
   }
 );
