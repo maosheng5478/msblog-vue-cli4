@@ -17,5 +17,7 @@ export default {
     password: 'Password',
     verificationCode: 'Verification Code',
     login_success: 'Login success',
+    being_exited: 'Being exited',
+    change_password: 'Change password'
   }
 };

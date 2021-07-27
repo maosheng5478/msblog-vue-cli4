@@ -23,6 +23,11 @@ const routes = [
         name: 'Login',
         component: () => import('../views/client/login'),
       },
+      {
+        path: 'userInfo',
+        name: 'UserInfo',
+        component: () => import('../views/client/use-info'),
+      }
     ]
   },
   {

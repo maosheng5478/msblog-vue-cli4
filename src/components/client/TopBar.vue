@@ -60,10 +60,20 @@
           <router-link
             to="/login"
             class="text"
+            v-if="online()"
             :style="data.style">
             <i class="el-icon-user-solid" />
             {{ $t('message.login') }}
           </router-link>
+          <el-dropdown v-else class="drop_down" style="margin-left: 10px">
+            <el-avatar icon="el-icon-user-solid" size="small" />
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>修改密码</el-dropdown-item>
+                <el-dropdown-item>注销</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
         <language class="change_text" :style="data.style" />
       </div>
@@ -76,11 +86,13 @@ import { defineComponent, reactive, onMounted } from 'vue';
 import { UisApps, UisHouseUser, UisBookmark } from '@iconscout/vue-unicons-solid';
 import { PushpinFilled } from '@ant-design/icons-vue';
 import Language from '../public/Language';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'TopBar',
   components: { Language, UisApps, UisHouseUser, UisBookmark, PushpinFilled },
   setup() {
+    const stroe = useStore();
     const data = reactive({
       style: {},
       opacity: 0,
@@ -104,9 +116,15 @@ export default defineComponent({
     window.addEventListener('scroll', handleWindowScroll);
     onMounted({
     });
+    const online = function() {
+      const username = stroe.getters.getUsername;
+      console.log(username);
+      return !(username === '' || username === null);
+    };
     return {
       handleWindowScroll,
-      data
+      data,
+      online,
     };
   },
 });
@@ -160,6 +178,10 @@ export default defineComponent({
     .change_text{
       margin-left: 20px;
       color: rgba(255,255,255,0.9) ;
+    }
+    .drop_down{
+      background-color: #2c3e50;
+      margin-left: 10px !important;
     }
   }
 }

@@ -83,11 +83,13 @@ import { loginByPwd } from '../../../api/login';
 import { getArithmetic } from '../../../api/code';
 import { ElMessage } from 'element-plus';
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'Login',
   setup() {
     const i18n = useI18n();
+    const router = useRouter();
     const store = useStore();
     const data = reactive({
       rules: {
@@ -123,6 +125,7 @@ export default defineComponent({
           type: 'success',
           duration: 2 * 1000,
         });
+        router.push('/userInfo');
       });
     };
     const handleArithmetic = function() {

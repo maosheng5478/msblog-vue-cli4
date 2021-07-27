@@ -5,12 +5,12 @@
       <div class="logo_text">{{ $t('message.title') }}</div>
     </div>
     <div class="user_img">
-      <el-dropdown style="">
-        <el-avatar icon="el-icon-user-solid" />
+      <el-dropdown style="" @command="handleCommand">
+        <el-avatar icon="el-icon-user-solid" size="small" />
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>修改密码</el-dropdown-item>
-            <el-dropdown-item>注销</el-dropdown-item>
+            <el-dropdown-item>{{ $t('message.change_password') }}</el-dropdown-item>
+            <el-dropdown-item command="logout">{{ $t('message.logout') }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -20,13 +20,42 @@
 
 <script>
 import { defineComponent, reactive } from 'vue';
+import { useRouter } from 'vue-router';
+import { ElLoading } from 'element-plus';
+import { useI18n } from 'vue-i18n';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name: 'AdminHeader',
   setup() {
+    const store = useStore();
+    const router = useRouter();
+    const i18n = useI18n();
     const data = reactive({});
+    const handleCommand = function (command) {
+      if (command === 'logout') {
+        store.commit('setUserPhone', '');
+        store.commit('setUsername', '');
+        store.commit('setUserEmail', '');
+        store.commit('setUserToken', '');
+        openFullScreen();
+      }
+    };
+    function openFullScreen () {
+      const loading = ElLoading.service({
+        lock: true,
+        text: i18n.t('message.being_exited'),
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.4)',
+      });
+      setTimeout(() => {
+        loading.close();
+        router.push('/home');
+      }, 1000);
+    }
     return {
       data,
+      handleCommand,
     };
   },
 });

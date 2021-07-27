@@ -17,5 +17,7 @@ export default {
     password: '密码',
     verificationCode: '验证码',
     login_success: '登录成功',
+    being_exited: '正在退出',
+    change_password: '修改密码',
   }
 };
