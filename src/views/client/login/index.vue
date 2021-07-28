@@ -78,19 +78,15 @@
 
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
-import { useStore } from 'vuex';
 import { loginByPwd } from '../../../api/login';
 import { getArithmetic } from '../../../api/code';
 import { ElMessage } from 'element-plus';
-import { useI18n } from 'vue-i18n';
-import { useRouter } from 'vue-router';
+import { commonUse } from '../../../utils/use';
 
 export default defineComponent({
   name: 'Login',
   setup() {
-    const i18n = useI18n();
-    const router = useRouter();
-    const store = useStore();
+    const use = commonUse();
     const data = reactive({
       rules: {
         username: [
@@ -112,27 +108,27 @@ export default defineComponent({
       imgEmpty: require('../../../assets/empty_img.png'),
     });
     const handleLogin = function () {
-      data.form.key = store.getters.getCodeKey;
+      data.form.key = use.store.getters.getCodeKey;
       loginByPwd(data.form).then((res) => {
         sessionStorage.setItem('username', res.username);
         sessionStorage.setItem('token', res.token);
-        store.commit('setUserPhone', res.phone);
-        store.commit('setUsername', res.username);
-        store.commit('setUserEmail', res.email);
-        store.commit('setUserToken', res.token);
+        use.store.commit('setUserPhone', res.phone);
+        use.store.commit('setUsername', res.username);
+        use.store.commit('setUserEmail', res.email);
+        use.store.commit('setUserToken', res.token);
         ElMessage.success({
-          message: i18n.t('message.login_success'),
+          message: use.i18n.t('message.login_success'),
           type: 'success',
           duration: 2 * 1000,
         });
-        router.push('/userInfo');
+        use.router.push('/userInfo');
       });
     };
     const handleArithmetic = function() {
       getArithmetic().then((res) => {
         data.imgSrc = res.img;
         data.imgLoad = false;
-        store.commit('setCodeKey', res.key);
+        use.store.commit('setCodeKey', res.key);
         return false;
       }).catch((err) => {
         data.imgLoad = true;

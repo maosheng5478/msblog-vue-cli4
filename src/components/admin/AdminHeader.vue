@@ -20,37 +20,29 @@
 
 <script>
 import { defineComponent, reactive } from 'vue';
-import { useRouter } from 'vue-router';
 import { ElLoading } from 'element-plus';
-import { useI18n } from 'vue-i18n';
-import { useStore } from 'vuex';
-
+import { commonUse } from '../../utils/use';
 export default defineComponent({
   name: 'AdminHeader',
   setup() {
-    const store = useStore();
-    const router = useRouter();
-    const i18n = useI18n();
+    const use = commonUse();
     const data = reactive({});
     const handleCommand = function (command) {
       if (command === 'logout') {
-        store.commit('setUserPhone', '');
-        store.commit('setUsername', '');
-        store.commit('setUserEmail', '');
-        store.commit('setUserToken', '');
+        use.clearLoginInfo();
         openFullScreen();
       }
     };
     function openFullScreen () {
       const loading = ElLoading.service({
         lock: true,
-        text: i18n.t('message.being_exited'),
+        text: use.getI18nItem('being_exited'),
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.4)',
       });
       setTimeout(() => {
         loading.close();
-        router.push('/home');
+        use.router.push('/home');
       }, 1000);
     }
     return {

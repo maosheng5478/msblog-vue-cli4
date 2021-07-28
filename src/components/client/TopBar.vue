@@ -86,13 +86,12 @@ import { defineComponent, reactive, onMounted } from 'vue';
 import { UisApps, UisHouseUser, UisBookmark } from '@iconscout/vue-unicons-solid';
 import { PushpinFilled } from '@ant-design/icons-vue';
 import Language from '../public/Language';
-import { useStore } from 'vuex';
+import { commonUse } from '../../utils/use';
 
 export default defineComponent({
   name: 'TopBar',
   components: { Language, UisApps, UisHouseUser, UisBookmark, PushpinFilled },
   setup() {
-    const stroe = useStore();
     const data = reactive({
       style: {},
       opacity: 0,
@@ -117,9 +116,9 @@ export default defineComponent({
     onMounted({
     });
     const online = function() {
-      const username = stroe.getters.getUsername;
-      console.log(username);
-      return !(username === '' || username === null);
+      console.log('store', commonUse().store);
+      const username = commonUse().store.getters.getUsername;
+      return (username === '' || username === null);
     };
     return {
       handleWindowScroll,
