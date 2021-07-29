@@ -20,8 +20,11 @@
 
 <script>
 import { defineComponent, reactive } from 'vue';
-import { ElLoading } from 'element-plus';
 import { commonUse } from '../../utils/use';
+import { openFullScreen } from '../loading';
+import { logout } from '../../api/login';
+import { ElMessage } from 'element-plus';
+
 export default defineComponent({
   name: 'AdminHeader',
   setup() {
@@ -29,22 +32,22 @@ export default defineComponent({
     const data = reactive({});
     const handleCommand = function (command) {
       if (command === 'logout') {
-        use.clearLoginInfo();
-        openFullScreen();
+        logout().then(() => {
+          ElMessage.success({
+            message: use.i18n.t('message.successful_logout'),
+            type: 'success',
+            duration: 2 * 1000,
+          });
+        }).catch((err) => {
+          console.error(err);
+        });
+        openFullScreen(use.getI18nItem('being_exited'), goHome);
       }
     };
-    function openFullScreen () {
-      const loading = ElLoading.service({
-        lock: true,
-        text: use.getI18nItem('being_exited'),
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.4)',
-      });
-      setTimeout(() => {
-        loading.close();
-        use.router.push('/home');
-      }, 1000);
-    }
+    const goHome = () => {
+      use.go('/home');
+      use.clearLoginInfo();
+    };
     return {
       data,
       handleCommand,

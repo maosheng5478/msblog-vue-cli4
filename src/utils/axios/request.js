@@ -1,17 +1,18 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
-import store from '../../store';
+import store from '@/store';
 
+const use = store;
+// 获取后端传来的token
+const token = use.getters.getToken;
 const service = axios.create({
-  baseURL: 'api',
+  baseURL: '/api',
   timeout: 5 * 1000,
 });
 
-// 获取后端传来的token
-const token = store.getters.getToken;
-
 service.interceptors.request.use(
   config => {
+    console.log(use.getters.getToken);
     config.headers['Content-Type'] = 'application/json;charset=UTF-8';
     config.data = JSON.stringify(config.data);
     config.headers['token'] = token;

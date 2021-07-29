@@ -6,6 +6,14 @@ import { getCurrentInstance } from 'vue';
 export function logItem() {
   console.log(commonUse().store);
 }
+export const useage = () => {
+  const router = useRouter();
+  const store = useStore();
+  return {
+    router,
+    store,
+  };
+};
 export function commonUse() {
   const i18n = useI18n();
   const { proxy } = getCurrentInstance;
@@ -25,6 +33,9 @@ export function commonUse() {
     const itemString = 'message.' + param;
     return i18n.t(itemString);
   }
+  function go(path) {
+    router.push(path).then(() => {});
+  }
   return {
     i18n,
     router,
@@ -32,5 +43,6 @@ export function commonUse() {
     getI18nItem,
     clearLoginInfo,
     getI18nItemByProxy,
+    go,
   };
 };

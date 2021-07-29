@@ -19,5 +19,6 @@ export default {
     login_success: '登录成功',
     being_exited: '正在退出',
     change_password: '修改密码',
+    successful_logout: '成功登出',
   }
 };

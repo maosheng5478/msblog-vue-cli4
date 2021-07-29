@@ -70,12 +70,15 @@
             <template #dropdown>
               <el-dropdown-menu>
                 <el-dropdown-item>修改密码</el-dropdown-item>
+                <el-dropdown-item>个人中心</el-dropdown-item>
                 <el-dropdown-item>注销</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
         </div>
-        <language class="change_text" :style="data.style" />
+        <div>
+          <language class="change_text" :style="data.style" />
+        </div>
       </div>
     </div>
   </div>
@@ -116,7 +119,6 @@ export default defineComponent({
     onMounted({
     });
     const online = function() {
-      console.log('store', commonUse().store);
       const username = commonUse().store.getters.getUsername;
       return (username === '' || username === null);
     };
@@ -129,7 +131,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .top{
   .center_container{
     width: 100%;
@@ -175,12 +177,12 @@ export default defineComponent({
       font-weight: bold;
     }
     .change_text{
+      margin-top: 3px;
       margin-left: 20px;
       color: rgba(255,255,255,0.9) ;
     }
     .drop_down{
-      background-color: #2c3e50;
-      margin-left: 10px !important;
+      margin-left: 15px !important;
     }
   }
 }

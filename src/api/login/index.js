@@ -12,10 +12,9 @@ export function loginByPwd(params) {
     data: params,
   });
 }
-export function logout(params) {
+export function logout() {
   return request({
     url: Api.logout,
     method: 'get',
-    data: params,
   });
 }
