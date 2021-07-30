@@ -65,13 +65,13 @@
             <i class="el-icon-user-solid" />
             {{ $t('message.login') }}
           </router-link>
-          <el-dropdown v-else class="drop_down" style="margin-left: 10px">
+          <el-dropdown v-else class="drop_down" @command="handleCommand">
             <el-avatar icon="el-icon-user-solid" size="small" />
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item>修改密码</el-dropdown-item>
-                <el-dropdown-item>个人中心</el-dropdown-item>
-                <el-dropdown-item>注销</el-dropdown-item>
+                <el-dropdown-item command="changePwd">{{ $t('message.change_password') }}</el-dropdown-item>
+                <el-dropdown-item command="pCenter">{{ $t('message.personal_center') }}</el-dropdown-item>
+                <el-dropdown-item command="signOut">{{ $t('message.sign_out') }}</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -90,11 +90,14 @@ import { UisApps, UisHouseUser, UisBookmark } from '@iconscout/vue-unicons-solid
 import { PushpinFilled } from '@ant-design/icons-vue';
 import Language from '../public/Language';
 import { commonUse } from '../../utils/use';
+import { logout } from '../../api/login';
+import { ElMessage } from 'element-plus';
 
 export default defineComponent({
   name: 'TopBar',
   components: { Language, UisApps, UisHouseUser, UisBookmark, PushpinFilled },
   setup() {
+    const use = commonUse();
     const data = reactive({
       style: {},
       opacity: 0,
@@ -119,11 +122,35 @@ export default defineComponent({
     onMounted({
     });
     const online = function() {
-      const username = commonUse().store.getters.getUsername;
+      const username = use.store.getters.getUsername;
       return (username === '' || username === null);
+    };
+    const handleCommand = function(command) {
+      switch (command) {
+        case 'changePwd':
+          console.log(command);
+          break;
+        case 'pCenter':
+          console.log(command);
+          break;
+        case 'signOut':
+          logout().then(res => {
+            use.clearLoginInfo();
+            ElMessage.success({
+              message: use.i18n.t('message.sign_out_success'),
+              type: 'success',
+              duration: 2 * 1000,
+            });
+          }).catch(() => {
+            use.clearLoginInfo();
+          });
+          use.routerGo('/login');
+          break;
+      }
     };
     return {
       handleWindowScroll,
+      handleCommand,
       data,
       online,
     };

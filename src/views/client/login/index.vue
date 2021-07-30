@@ -110,8 +110,6 @@ export default defineComponent({
     const handleLogin = function () {
       data.form.key = use.store.getters.getCodeKey;
       loginByPwd(data.form).then((res) => {
-        sessionStorage.setItem('username', res.username);
-        sessionStorage.setItem('token', res.token);
         use.store.commit('setUserPhone', res.phone);
         use.store.commit('setUsername', res.username);
         use.store.commit('setUserEmail', res.email);

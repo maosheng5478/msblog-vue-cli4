@@ -3,8 +3,6 @@ import { ElMessage } from 'element-plus';
 import store from '@/store';
 
 const use = store;
-// 获取后端传来的token
-const token = use.getters.getToken;
 const service = axios.create({
   baseURL: '/api',
   timeout: 5 * 1000,
@@ -12,7 +10,8 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    console.log(use.getters.getToken);
+    // 获取后端传来的token
+    const token = use.getters.getToken;
     config.headers['Content-Type'] = 'application/json;charset=UTF-8';
     config.data = JSON.stringify(config.data);
     config.headers['token'] = token;
@@ -40,12 +39,22 @@ service.interceptors.response.use(
       }
     });
   }, error => {
-    ElMessage({
-      showClose: true,
-      message: error.response.data.msg || 'server error',
-      type: 'error',
-      duration: 2 * 1000,
-    });
+    const response = error.response;
+    if (response === null || response === '') {
+      ElMessage({
+        showClose: true,
+        message: '服务器链接异常',
+        type: 'error',
+        duration: 2 * 1000,
+      });
+    } else {
+      ElMessage({
+        showClose: true,
+        message: error.response.data.msg || 'server error',
+        type: 'error',
+        duration: 2 * 1000,
+      });
+    }
   }
 );
 export default service;

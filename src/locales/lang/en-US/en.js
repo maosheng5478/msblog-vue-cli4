@@ -20,5 +20,9 @@ export default {
     being_exited: 'Being exited',
     change_password: 'Change password',
     successful_logout: 'Successful logout',
+    personal_center: 'Personal center',
+    cancel: 'Cancel',
+    sign_out: 'Sign out',
+    sign_out_success: 'Sign out success',
   }
 };

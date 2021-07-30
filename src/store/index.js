@@ -21,16 +21,17 @@ export default createStore({
       return state.code_key;
     },
     getToken(state) {
-      return state.user_token;
+      console.log('gettoken', state.user_token ? state.user_token : sessionStorage.getItem('token'));
+      return state.user_token ? state.user_token : sessionStorage.getItem('token');
     },
     getPhone(state) {
-      return state.user_phone;
+      return state.user_phone ? state.user_phone : sessionStorage.getItem('phone');
     },
     getEmail(state) {
-      return state.user_email;
+      return state.user_email ? state.user_email : sessionStorage.getItem('email');
     },
     getUsername(state) {
-      return state.username;
+      return state.username ? state.username : sessionStorage.getItem('username');
     }
   }
 });

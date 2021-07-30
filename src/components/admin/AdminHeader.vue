@@ -45,7 +45,7 @@ export default defineComponent({
       }
     };
     const goHome = () => {
-      use.go('/home');
+      use.routerGo('/home');
       use.clearLoginInfo();
     };
     return {

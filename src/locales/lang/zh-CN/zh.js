@@ -20,5 +20,9 @@ export default {
     being_exited: '正在退出',
     change_password: '修改密码',
     successful_logout: '成功登出',
+    personal_center: '个人中心',
+    cancel: '取消',
+    sign_out: '注销',
+    sign_out_success: '登出成功',
   }
 };

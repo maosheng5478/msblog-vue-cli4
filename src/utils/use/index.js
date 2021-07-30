@@ -20,6 +20,7 @@ export function commonUse() {
   const router = useRouter();
   const store = useStore();
   const clearLoginInfo = function() {
+    sessionStorage.clear();
     store.commit('setUserPhone', '');
     store.commit('setUsername', '');
     store.commit('setUserEmail', '');
@@ -33,7 +34,7 @@ export function commonUse() {
     const itemString = 'message.' + param;
     return i18n.t(itemString);
   }
-  function go(path) {
+  function routerGo(path) {
     router.push(path).then(() => {});
   }
   return {
@@ -43,6 +44,6 @@ export function commonUse() {
     getI18nItem,
     clearLoginInfo,
     getI18nItemByProxy,
-    go,
+    routerGo,
   };
 };
