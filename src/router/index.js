@@ -14,6 +14,21 @@ const routes = [
         component: () => import('../views/client/home/Home'),
       },
       {
+        path: '/tags',
+        name: 'Tags',
+        component: () => import('../views/client/tags'),
+      },
+      {
+        path: '/links',
+        name: 'Links',
+        component: () => import('../views/client/links'),
+      },
+      {
+        path: '/about',
+        name: 'About',
+        component: () => import('../views/client/about'),
+      },
+      {
         path: '/categories',
         name: 'categories',
         component: () => import('../views/client/categories'),

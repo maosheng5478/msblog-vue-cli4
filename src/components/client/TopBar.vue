@@ -31,7 +31,7 @@
         </div>
         <div>
           <router-link
-            to=""
+            to="/tags"
             class="text"
             :style="data.style">
             <UisBookmark size="18px" />
@@ -40,7 +40,7 @@
         </div>
         <div>
           <router-link
-            to=""
+            to="/links"
             class="text"
             :style="data.style">
             <PushpinFilled />
@@ -49,7 +49,7 @@
         </div>
         <div>
           <router-link
-            to=""
+            to="/about"
             class="text"
             :style="data.style">
             <i class="el-icon-s-promotion" />
@@ -132,6 +132,7 @@ export default defineComponent({
           break;
         case 'pCenter':
           console.log(command);
+          use.routerGo('/userInfo');
           break;
         case 'signOut':
           logout().then(res => {

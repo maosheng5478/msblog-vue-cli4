@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="c_banner">
-      <p class="c_title">{{ $t('message.categories') }}</p>
+    <div class="t_banner">
+      <p class="t_title">{{ $t('message.tags') }}</p>
     </div>
     this is categories
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
@@ -10,21 +10,19 @@
 
 <script>
 import { defineComponent } from 'vue';
-
 export default defineComponent({
-  name: 'Categories',
+  name: 'Tags',
   setup() {
-    return { };
+
   },
 });
 </script>
-
-<style lang="scss" scoped>
-.c_banner{
+<style lang="scss">
+.t_banner{
   height: 100vh;
   overflow: hidden;
-  background: #fff url('https://z3.ax1x.com/2021/07/20/WN4nPS.jpg') left top no-repeat;
-  .c_title{
+  background: #fff url('https://z3.ax1x.com/2021/07/20/WN4ZUf.jpg') no-repeat fixed center center;
+  .t_title{
     color: #fff;
     display:block;
     justify-content: center;
