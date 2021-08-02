@@ -64,8 +64,24 @@ export default defineComponent({
     }
   }
   .c_main{
-    background-color: rgba(66, 185, 131, 0.71);
     padding: 0;
+    background: linear-gradient(90deg,
+      rgba(247,149,51,.1),rgba(243,112,85,.1) 15%,
+      rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,
+      rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,
+      rgba(7,179,155,.1) 86%,rgba(109,186,130,.1));
+    background-image: linear-gradient(90deg,
+      rgba(247, 149, 51, 0.1), rgba(243, 112, 85, 0.1) 15%,
+      rgba(239, 78, 123, 0.1) 30%, rgba(161, 102, 171, 0.1) 44%,
+      rgba(80, 115, 184, 0.1) 58%, rgba(16, 152, 173, 0.1) 72%,
+      rgba(7, 179, 155, 0.1) 86%, rgba(109, 186, 130, 0.1));
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
   }
   .c_footer{
     margin: 0;
@@ -75,6 +91,7 @@ export default defineComponent({
 .bg-bubbles {
     position: fixed;
     top: 0;
+    z-index: -1;
     padding: 0;
     left: 0;
     width: 100%;
@@ -86,7 +103,7 @@ export default defineComponent({
       // 默认的气泡大小；
       width: 40px;
       height: 40px;
-      background-color: rgba(255, 255, 255, 0.18);
+      background-color: rgba(247, 149, 51, 0.2);
       list-style: none;
       // 使用自定义动画使气泡渐现、上升和翻滚；
       animation: square 15s infinite;
@@ -94,6 +111,7 @@ export default defineComponent({
       // 分别设置每个气泡不同的位置、大小、透明度和速度，以显得有层次感；
       &:nth-child(1) {
         left: 10%;
+        background-color: rgba(189, 65, 100, 0.2);
       }
       &:nth-child(2) {
         left: 20%;
@@ -101,17 +119,19 @@ export default defineComponent({
         height: 90px;
         animation-delay: 2s;
         animation-duration: 7s;
+        background-color: rgba(22, 95, 163, 0.2);
       }
       &:nth-child(3) {
         left: 25%;
         animation-delay: 4s;
+        background-color: rgba(129,8,13,.1);
       }
       &:nth-child(4) {
         left: 40%;
         width: 60px;
         height: 60px;
         animation-duration: 8s;
-        background-color: rgba(255, 255, 255, 0.34);
+        background-color:rgba(173, 101, 185, 0.1);
       }
       &:nth-child(5) {
         left: 70%;
@@ -121,13 +141,14 @@ export default defineComponent({
         width: 120px;
         height: 120px;
         animation-delay: 3s;
-        background-color: rgba(255, 255, 255, 0.38);
+        background-color: rgba(19, 173, 197, 0.1);
       }
       &:nth-child(7) {
         left: 32%;
         width: 160px;
         height: 160px;
         animation-delay: 2s;
+        background-color: rgba(21, 165, 153, 0.1);
       }
       &:nth-child(8) {
         left: 55%;
@@ -135,6 +156,7 @@ export default defineComponent({
         height: 20px;
         animation-delay: 4s;
         animation-duration: 15s;
+        background-color: rgba(223, 213, 82, 0.2);
       }
       &:nth-child(9) {
         left: 25%;
@@ -142,13 +164,14 @@ export default defineComponent({
         height: 10px;
         animation-delay: 2s;
         animation-duration: 12s;
-        background-color: rgba(255, 255, 255, 0.45);
+        background-color: rgba(7, 179, 155, 0.2);
       }
       &:nth-child(10) {
         left: 85%;
         width: 160px;
         height: 160px;
         animation-delay: 5s;
+        background-color: rgba(48, 54, 54, 0.2);
       }
     }
     // 自定义 square 动画；

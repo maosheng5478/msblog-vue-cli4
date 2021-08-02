@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import store from '@/store';
+import { useage } from '../use';
 
 const use = store;
 const service = axios.create({
@@ -33,6 +34,9 @@ service.interceptors.response.use(
           type: 'error',
           duration: 2 * 1000,
         });
+        if (data.code === 401) {
+          useage().router.go('/login');
+        }
         return reject(data.msg || 'error');
       } else {
         return resolve(data.data);

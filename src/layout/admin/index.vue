@@ -54,7 +54,7 @@ export default defineComponent({
 .ly_main{
   padding: 0;
   margin-left: #{$admin_aside_width};
-  background-color: #888888;
+  background-color: #fff;
   margin-top: #{$admin_header_height};
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;

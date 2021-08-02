@@ -3,8 +3,20 @@
     <div class="ui_banner">
       <p class="ui_title">{{ $t('message.personal_center') }}</p>
     </div>
-    this is categories
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <div class="user_info_m">
+      is categories
+      <br>
+      is categories
+      <br>
+      is categories
+      <br>
+      is categories
+      <br>
+      is categories
+      <br>
+      is categories
+      <br>
+    </div>
   </div>
 </template>
 
@@ -17,7 +29,7 @@ export default defineComponent({
   },
 });
 </script>
-""
+
 <style lang="scss">
 .ui_banner{
   height: 100vh;
@@ -31,5 +43,11 @@ export default defineComponent({
     font-size: 24px;
     font-weight: bold;
   }
+}
+.user_info_m{
+  max-width: 1200px;
+  margin: 48px auto 28px auto;
+  padding: 0 5px;
+  background-color: #fff;
 }
 </style>

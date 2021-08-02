@@ -1,11 +1,13 @@
 <template>
-  <div>this is admin home page</div>
-  <br><br><br><br><br><br><br><br><br>hi
-  <br><br><br><br><br><br><br><br><br>hi
-  <br><br><br><br><br><br><br><br><br>hi
-  <br><br><br><br><br><br><br><br><br>hi
-  <br><br><br><br><br><br><br><br><br>hi
-  <br><br><br><br><br><br><br><br><br>hi
+  <div class="bg">this is admin home page
+    <br><br><br><br><br><br><br><br><br>hi
+    <br><br><br><br><br><br><br><br><br>hi
+    <br><br><br><br><br><br><br><br><br>hi
+    <br><br><br><br><br><br><br><br><br>hi
+    <br><br><br><br><br><br><br><br><br>hi
+    <br><br><br><br><br><br><br><br><br>hi
+  </div>
+
 </template>
 
 <script>
