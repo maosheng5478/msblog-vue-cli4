@@ -3,6 +3,7 @@ import Layout from '@/layout/client';
 import { hasUser } from './user';
 import { authentication } from '../api/login';
 import { ElMessage } from 'element-plus';
+
 const routes = [
   {
     path: '/',
@@ -85,7 +86,7 @@ router.beforeEach((to, from, next) => {
     } else {
       ElMessage({
         showClose: true,
-        message: 'You must login first',
+        message: 'Please login first',
         type: 'error',
         duration: 2 * 1000,
       });

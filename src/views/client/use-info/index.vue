@@ -3,7 +3,7 @@
     <div class="ui_banner">
       <p class="ui_title">{{ $t('message.personal_center') }}</p>
     </div>
-    <div class="user_info_m">
+    <el-card class="user_info_m">
       is categories
       <br>
       is categories
@@ -16,7 +16,7 @@
       <br>
       is categories
       <br>
-    </div>
+    </el-card>
   </div>
 </template>
 
@@ -47,7 +47,16 @@ export default defineComponent({
 .user_info_m{
   max-width: 1200px;
   margin: 48px auto 28px auto;
-  padding: 0 5px;
+  padding: 50px;
   background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
+  transition: all 0.3s;
+  .el-card__body {
+    padding: 0px;
+}
+}
+.user_info_m:hover{
+  box-shadow:0 5px 8px 6px rgb(6 16 26 / 12%);
 }
 </style>

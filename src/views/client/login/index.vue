@@ -35,18 +35,13 @@
                 :placeholder="$t('message.verificationCode')" />
             </el-col>
             <el-col :span="10">
-              <img
-                :src="data.imgSrc"
-                alt=""
-                @click="handleArithmetic"
-                v-if="!data.imgLoad">
-              <div v-else>
-                <img
-                  src="../../../assets/imgEmpty.png"
-                  alt=""
-                  ref="img"
-                  style="height: 40px">
-              </div>
+              <el-image :src="data.imgSrc" style="height: 40px"  @click="handleArithmetic">
+                <template #error>
+                  <div style="font-size: 30px">
+                    <i class="el-icon-picture-outline" />
+                  </div>
+                </template>
+              </el-image>
             </el-col>
           </el-row>
         </el-form-item>
@@ -103,9 +98,7 @@ export default defineComponent({
         key: '',
       },
       loading: false,
-      imgLoad: true,
       imgSrc: '',
-      imgEmpty: require('../../../assets/empty_img.png'),
     });
     const handleLogin = function () {
       data.form.key = use.store.getters.getCodeKey;
@@ -115,7 +108,7 @@ export default defineComponent({
         use.store.commit('setUserEmail', res.email);
         use.store.commit('setUserToken', res.token);
         ElMessage.success({
-          message: use.i18n.t('message.login_success'),
+          message: use.t('message.login_success'),
           type: 'success',
           duration: 2 * 1000,
         });
@@ -125,13 +118,9 @@ export default defineComponent({
     const handleArithmetic = function() {
       getArithmetic().then((res) => {
         data.imgSrc = res.img;
-        data.imgLoad = false;
         use.store.commit('setCodeKey', res.key);
-        return false;
       }).catch((err) => {
-        data.imgLoad = true;
         console.error(err);
-        return true;
       });
     };
     onMounted(() => {
@@ -139,6 +128,7 @@ export default defineComponent({
     });
     return {
       data,
+      use,
       handleLogin,
       handleArithmetic,
     };
@@ -171,6 +161,9 @@ export default defineComponent({
   background: #fff;
   border: 1px #eaeaeab6;
   box-shadow: 0 0 25px #a8a6a69f;
+  .el-icon-picture-outline{
+    color: #909399;
+  }
 }
 .login_title {
     margin: 0px auto 40px auto;

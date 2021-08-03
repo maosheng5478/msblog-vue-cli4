@@ -34,7 +34,7 @@ export default defineComponent({
       if (command === 'logout') {
         logout().then(() => {
           ElMessage.success({
-            message: use.i18n.t('message.successful_logout'),
+            message: use.t('message.successful_logout'),
             type: 'success',
             duration: 2 * 1000,
           });
@@ -50,6 +50,7 @@ export default defineComponent({
     };
     return {
       data,
+      use,
       handleCommand,
     };
   },

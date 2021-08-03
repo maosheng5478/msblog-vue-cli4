@@ -88,7 +88,7 @@
 import { defineComponent, reactive, onMounted } from 'vue';
 import { UisApps, UisHouseUser, UisBookmark } from '@iconscout/vue-unicons-solid';
 import { PushpinFilled } from '@ant-design/icons-vue';
-import Language from '../public/Language';
+import Language from '../language';
 import { commonUse } from '../../utils/use';
 import { logout } from '../../api/login';
 import { ElMessage } from 'element-plus';

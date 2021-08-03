@@ -4,6 +4,7 @@
       <p class="c_title">{{ $t('message.categories') }}</p>
     </div>
     this is categories
+    <i class="el-icon-delete" />
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
   </div>
 </template>

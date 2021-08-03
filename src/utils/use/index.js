@@ -9,14 +9,19 @@ export function logItem() {
 export const useage = () => {
   const router = useRouter();
   const store = useStore();
+  const { proxy } = getCurrentInstance();
+  function getI18nItemByProxy(param) {
+    const itemString = 'message.' + param;
+    return proxy.$t(itemString);
+  }
   return {
     router,
+    getI18nItemByProxy,
     store,
   };
 };
 export function commonUse() {
-  const i18n = useI18n();
-  const { proxy } = getCurrentInstance;
+  const { t } = useI18n();
   const router = useRouter();
   const store = useStore();
   const clearLoginInfo = function() {
@@ -26,24 +31,19 @@ export function commonUse() {
     store.commit('setUserEmail', '');
     store.commit('setUserToken', '');
   };
-  function getI18nItemByProxy(param) {
-    const itemString = 'message.' + param;
-    return proxy.$t(itemString);
-  };
   function getI18nItem(param) {
     const itemString = 'message.' + param;
-    return i18n.t(itemString);
+    return t(itemString);
   }
   function routerGo(path) {
     router.push(path).then(() => {});
   }
   return {
-    i18n,
+    t,
     router,
     store,
     getI18nItem,
     clearLoginInfo,
-    getI18nItemByProxy,
     routerGo,
   };
 };

@@ -38,7 +38,11 @@ export default defineComponent({
       if (data.opacity > 0.85) {
         data.opacity = 0.85;
       }
-      data.style = { background: `rgba(255, 255, 255,${data.opacity})` };
+      if (data.opacity === 0) {
+        data.style = { background: `rgba(255, 255, 255,${data.opacity})`, 'box-shadow': '0 0 0 0' };
+        return;
+      }
+      data.style = { background: `rgba(255, 255, 255,${data.opacity})`, 'box-shadow': '0 5px 6px -5px hsl(0deg 0% 52% / 60%)' };
     };
     window.addEventListener('scroll', handleWindowScroll);
     onMounted({
@@ -58,6 +62,7 @@ export default defineComponent({
     position: fixed;
     z-index: 999;
     padding: 0;
+    box-shadow: 0 0 ;
     .header_main{
       width: 100%;
       margin-top: 15px;
@@ -65,23 +70,16 @@ export default defineComponent({
   }
   .c_main{
     padding: 0;
-    background: linear-gradient(90deg,
-      rgba(247,149,51,.1),rgba(243,112,85,.1) 15%,
-      rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,
-      rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,
-      rgba(7,179,155,.1) 86%,rgba(109,186,130,.1));
-    background-image: linear-gradient(90deg,
-      rgba(247, 149, 51, 0.1), rgba(243, 112, 85, 0.1) 15%,
-      rgba(239, 78, 123, 0.1) 30%, rgba(161, 102, 171, 0.1) 44%,
-      rgba(80, 115, 184, 0.1) 58%, rgba(16, 152, 173, 0.1) 72%,
-      rgba(7, 179, 155, 0.1) 86%, rgba(109, 186, 130, 0.1));
     background-position-x: initial;
     background-position-y: initial;
     background-size: initial;
-    background-attachment: initial;
     background-origin: initial;
     background-clip: initial;
-    background-color: initial;
+    background: initial linear-gradient(90deg,
+      rgba(247, 149, 51, 0.1), rgba(243, 112, 85, 0.1) 15%,
+      rgba(239, 78, 123, 0.1) 30%, rgba(161, 102, 171, 0.1) 44%,
+      rgba(80, 115, 184, 0.1) 58%, rgba(16, 152, 173, 0.1) 72%,
+      rgba(7, 179, 155, 0.1) 86%, rgba(109, 186, 130, 0.1)) initial;
   }
   .c_footer{
     margin: 0;
