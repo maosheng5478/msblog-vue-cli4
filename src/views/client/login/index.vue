@@ -107,6 +107,9 @@ export default defineComponent({
         use.store.commit('setUsername', res.username);
         use.store.commit('setUserEmail', res.email);
         use.store.commit('setUserToken', res.token);
+        use.store.commit('setUserSex', res.sex);
+        use.store.commit('setUserIntroduction', res.introduction);
+        use.store.commit('setCreateTime', res.createTime);
         ElMessage.success({
           message: use.t('message.login_success'),
           type: 'success',

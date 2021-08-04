@@ -16,8 +16,7 @@
             to="/"
             class="text"
             :style="data.style">
-            <UisHouseUser size="18px"  />
-            {{ $t('message.homepage') }}
+            <i class="el-icon-s-home" />{{ $t('message.homepage') }}
           </router-link>
         </div>
         <div>
@@ -25,8 +24,7 @@
             to="/categories"
             class="text"
             :style="data.style">
-            <uis-apps size="18px" />
-            {{ $t('message.categories') }}
+            <i class="el-icon-menu" />{{ $t('message.categories') }}
           </router-link>
         </div>
         <div>
@@ -34,8 +32,7 @@
             to="/tags"
             class="text"
             :style="data.style">
-            <UisBookmark size="18px" />
-            {{ $t('message.tags') }}
+            <i class="el-icon-s-management" />{{ $t('message.tags') }}
           </router-link>
         </div>
         <div>
@@ -43,8 +40,7 @@
             to="/links"
             class="text"
             :style="data.style">
-            <PushpinFilled />
-            {{ $t('message.links') }}
+            <i class="el-icon-connection" />{{ $t('message.links') }}
           </router-link>
         </div>
         <div>
@@ -52,8 +48,7 @@
             to="/about"
             class="text"
             :style="data.style">
-            <i class="el-icon-s-promotion" />
-            {{ $t('message.about') }}
+            <i class="el-icon-s-promotion" />{{ $t('message.about') }}
           </router-link>
         </div>
         <div>
@@ -62,8 +57,7 @@
             class="text"
             v-if="online()"
             :style="data.style">
-            <i class="el-icon-user-solid" />
-            {{ $t('message.login') }}
+            <i class="el-icon-user-solid" />{{ $t('message.login') }}
           </router-link>
           <el-dropdown v-else class="drop_down" @command="handleCommand">
             <el-avatar icon="el-icon-user-solid" size="small" />
@@ -86,8 +80,6 @@
 
 <script>
 import { defineComponent, reactive, onMounted } from 'vue';
-import { UisApps, UisHouseUser, UisBookmark } from '@iconscout/vue-unicons-solid';
-import { PushpinFilled } from '@ant-design/icons-vue';
 import Language from '../language';
 import { commonUse } from '../../utils/use';
 import { logout } from '../../api/login';
@@ -95,7 +87,7 @@ import { ElMessage } from 'element-plus';
 
 export default defineComponent({
   name: 'TopBar',
-  components: { Language, UisApps, UisHouseUser, UisBookmark, PushpinFilled },
+  components: { Language },
   setup() {
     const use = commonUse();
     const data = reactive({
@@ -131,14 +123,13 @@ export default defineComponent({
           console.log(command);
           break;
         case 'pCenter':
-          console.log(command);
           use.routerGo('/userInfo');
           break;
         case 'signOut':
           logout().then(res => {
             use.clearLoginInfo();
             ElMessage.success({
-              message: use.i18n.t('message.sign_out_success'),
+              message: use.t('message.sign_out_success'),
               type: 'success',
               duration: 2 * 1000,
             });
@@ -207,6 +198,7 @@ export default defineComponent({
     .change_text{
       margin-top: 3px;
       margin-left: 20px;
+      text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3);
       color: rgba(255,255,255,0.9) ;
     }
     .drop_down{

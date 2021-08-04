@@ -18,4 +18,16 @@ export const mutations = {
     state.user_email = email;
     sessionStorage.setItem('email', email);
   },
+  setUserSex(state, sex) {
+    state.user_sex = sex;
+    sessionStorage.setItem('sex', sex);
+  },
+  setUserIntroduction(state, introduction) {
+    state.user_introduction = introduction;
+    sessionStorage.setItem('introduction', introduction);
+  },
+  setCreateTime(state, createTime) {
+    state.user_createTime = createTime;
+    sessionStorage.setItem('createTime', createTime);
+  }
 };

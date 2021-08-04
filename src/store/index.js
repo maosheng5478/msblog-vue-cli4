@@ -11,6 +11,9 @@ export default createStore({
       user_token: '',
       user_phone: '',
       user_email: '',
+      user_sex: '',
+      user_introduction: '',
+      user_createTime: '',
     };
   },
   mutations,
@@ -21,7 +24,6 @@ export default createStore({
       return state.code_key;
     },
     getToken(state) {
-      console.log('gettoken', state.user_token ? state.user_token : sessionStorage.getItem('token'));
       return state.user_token ? state.user_token : sessionStorage.getItem('token');
     },
     getPhone(state) {
@@ -32,6 +34,15 @@ export default createStore({
     },
     getUsername(state) {
       return state.username ? state.username : sessionStorage.getItem('username');
-    }
+    },
+    getUserSex(state) {
+      return state.user_sex ? state.user_sex : sessionStorage.getItem('sex');
+    },
+    getUserCreateTime(state) {
+      return state.user_createTime ? state.user_createTime : sessionStorage.getItem('createTime');
+    },
+    getUserIntroduction(state) {
+      return state.user_introduction ? state.user_introduction : sessionStorage.getItem('introduction');
+    },
   }
 });

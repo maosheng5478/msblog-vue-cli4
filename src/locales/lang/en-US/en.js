@@ -24,5 +24,9 @@ export default {
     cancel: 'Cancel',
     sign_out: 'Sign out',
     sign_out_success: 'Sign out success',
+    edit: 'Edit',
+    phone: 'Phone',
+    email: 'Email',
+    registration_time: 'Registration Time',
   }
 };

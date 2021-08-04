@@ -24,5 +24,9 @@ export default {
     cancel: '取消',
     sign_out: '注销',
     sign_out_success: '登出成功',
+    edit: '编辑',
+    phone: '手机号',
+    email: '邮箱',
+    registration_time: '注册时间',
   }
 };
