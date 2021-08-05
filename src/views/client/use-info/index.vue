@@ -12,7 +12,7 @@
           <p class="name-p">
             {{ use.store.getters.getUsername }}
           </p>
-          <span><el-tag size="small" type="warning">男</el-tag></span>
+          <span><el-tag size="small" type="warning">{{ use.store.getters.getUserSex }}</el-tag></span>
         </el-col>
         <el-col :span="2"> <el-tag effect="dark">系统管理员</el-tag></el-col>
       </el-row>
@@ -24,7 +24,8 @@
         </el-col>
         <el-col :span="18" class="text_el-col name-font" />
         <el-col :span="2" class="text_el-col name-font">
-          <el-button type="text" icon="el-icon-edit">{{ $t('message.edit') }}</el-button>
+          <el-button type="text" icon="el-icon-edit" @click="data.dialogFormVisible = true">{{ $t('message.edit') }}</el-button>
+          <user-edit-form title="sss" v-model="data.dialogFormVisible" />
         </el-col>
       </el-row>
       <!-- 分割线 -->
@@ -59,6 +60,16 @@
           </p>
         </el-col>
       </el-row>
+      <el-row :gutter="20">
+        <el-col :span="4">
+          <p class="left_title"> {{ $t('message.introduction') }}: </p>
+        </el-col>
+        <el-col :span="18" class="text_el-col name-font">
+          <p class="name-p">
+            {{ use.store.getters.getUserIntroduction }}
+          </p>
+        </el-col>
+      </el-row>
     </el-card>
   </div>
 </template>
@@ -66,12 +77,15 @@
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
 import { commonUse } from '../../../utils/use';
+import userEditForm from '../../../components/userEditForm';
 export default defineComponent({
   name: 'UserInfo',
+  components: { userEditForm },
   setup() {
     const use = commonUse();
     const data = reactive({
-      userName: { type: String, default: 'username' }
+      userName: { type: String, default: 'username' },
+      dialogFormVisible: false,
     });
     const loadUserInfo = function() {
       if (use.store.getters.getUserName) {

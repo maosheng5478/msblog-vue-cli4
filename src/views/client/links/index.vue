@@ -3,6 +3,7 @@
     <div class="l_banner">
       <p class="l_title">{{ $t('message.links') }}</p>
     </div>
+    <user-edit-form />
     this is categories
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
   </div>
@@ -10,8 +11,10 @@
 
 <script>
 import { defineComponent } from 'vue';
+import userEditForm from '../../../components/userEditForm';
 export default defineComponent({
   name: 'Links',
+  components: { userEditForm },
   setup() {
 
   },

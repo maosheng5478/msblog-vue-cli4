@@ -28,5 +28,6 @@ export default {
     phone: 'Phone',
     email: 'Email',
     registration_time: 'Registration Time',
+    introduction: 'Introduction',
   }
 };

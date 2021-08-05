@@ -28,5 +28,6 @@ export default {
     phone: '手机号',
     email: '邮箱',
     registration_time: '注册时间',
+    introduction: '简介',
   }
 };
