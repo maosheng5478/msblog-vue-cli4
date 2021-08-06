@@ -2,7 +2,7 @@
   <el-dialog :title="title" :v-model="dialogFormVisible">
     <el-form
       ref="formRef"
-      :model="data.formData"
+      :model="formData"
       :rules="data.rules"
       label-width="100px">
       <el-row :gutter="14">
@@ -55,7 +55,9 @@
         </el-col>
         <el-col :span="5">
           <el-form-item label-width="0" prop="sendSMS">
-            <el-button type="primary" size="medium"> 发送验证码 </el-button>
+            <el-button type="primary" size="medium" @click="getCode">
+              <span v-show="show">获取验证码</span>
+              <span v-show="!show" class="count"> { {count }} s</span> </el-button>
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -78,28 +80,34 @@
 </template>
 
 <script>
+import { ElMessage } from 'element-plus';
 import { defineComponent, reactive, ref } from 'vue';
+import { sendSMS } from '../../api/code';
+import { commonUse } from '../../utils/use';
 import rules from './rules';
 export default defineComponent({
   name: 'UserEditForm',
   props: {
     dialogFormVisible: { type: Boolean, default: false },
     title: { type: String, default: '' },
+    formData: {
+      username: { type: String, default: '' },
+      sex: '男',
+      email: '',
+      phone: '',
+      code: '',
+      introduction: '',
+    },
   },
   emits: ['closeForm'],
   setup(props, { emit }) {
     const formRef = ref();
+    const use = commonUse();
     const data = reactive({
       rules: rules,
-      formData: {
-        username: '',
-        sex: '男',
-        email: '',
-        phone: '',
-        code: '',
-        sendSMS: '',
-        introduction: '',
-      },
+      show: true,
+      count: '',
+      formData: props.formData,
       sexOptions: [{
         label: '男',
         value: '男'
@@ -115,11 +123,32 @@ export default defineComponent({
       emit('closeForm');
       formRef.value.resetFields();
     }
+    const getCode = function() {
+      const param = {
+        phone: data.formData.phone
+      };
+      if (param.phone) {
+        sendSMS(param).then(() => {
+          ElMessage.success({
+            message: use.t('message.input_phone'),
+            duration: 2 * 1000,
+          });
+        }).catch();
+      } else {
+        ElMessage.error({
+          type: 'error',
+          message: use.t('message.input_phone'),
+          duration: 2 * 1000,
+        });
+      }
+    };
     return {
       data,
       formRef,
       handleConfirm,
       close,
+      getCode,
+      props,
     };
   }
 });

@@ -21,7 +21,7 @@ export default {
   }],
   code: [{
     required: true,
-    message: '验证码',
+    message: '请输入验证码',
     trigger: 'blur'
   }],
   introduction: [{

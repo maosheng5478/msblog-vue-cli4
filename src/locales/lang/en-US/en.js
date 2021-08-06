@@ -29,5 +29,7 @@ export default {
     email: 'Email',
     registration_time: 'Registration Time',
     introduction: 'Introduction',
+    input_phone: 'Please enter the correct cell phone number ',
+    sms_send_success: '',
   }
 };

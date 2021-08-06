@@ -25,7 +25,7 @@
         <el-col :span="18" class="text_el-col name-font" />
         <el-col :span="2" class="text_el-col name-font">
           <el-button type="text" icon="el-icon-edit" @click="data.dialogFormVisible = true">{{ $t('message.edit') }}</el-button>
-          <user-edit-form title="sss" v-model="data.dialogFormVisible" />
+          <user-edit-form title="sss" v-model="data.dialogFormVisible" :form-data="data.formData" />
         </el-col>
       </el-row>
       <!-- 分割线 -->
@@ -86,6 +86,14 @@ export default defineComponent({
     const data = reactive({
       userName: { type: String, default: 'username' },
       dialogFormVisible: false,
+      formData: {
+        username: use.store.getters.getUsername,
+        sex: use.store.getters.getUserSex,
+        email: use.store.getters.getEmail,
+        phone: use.store.getters.getPhone,
+        code: '',
+        introduction: use.store.getters.getUserIntroduction,
+      },
     });
     const loadUserInfo = function() {
       if (use.store.getters.getUserName) {

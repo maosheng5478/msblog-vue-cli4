@@ -29,5 +29,7 @@ export default {
     email: '邮箱',
     registration_time: '注册时间',
     introduction: '简介',
+    input_phone: '请输入手机号',
+    sms_send_success: '验证码发送成功',
   }
 };
