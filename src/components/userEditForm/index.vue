@@ -55,9 +55,14 @@
         </el-col>
         <el-col :span="5">
           <el-form-item label-width="0" prop="sendSMS">
-            <el-button type="primary" size="medium" @click="getCode">
-              <span v-show="show">获取验证码</span>
-              <span v-show="!show" class="count"> { {count }} s</span> </el-button>
+            <el-button
+              :type="data.show ? 'primary' : 'info'"
+              size="medium"
+              @click="getCode"
+              :disabled="!data.show">
+              <span v-show="data.show">获取验证码</span>
+              <span v-show="!data.show" class="count"> {{ data.count }} s</span>
+            </el-button>
           </el-form-item>
         </el-col>
         <el-col :span="24">
@@ -130,9 +135,14 @@ export default defineComponent({
       if (param.phone) {
         sendSMS(param).then(() => {
           ElMessage.success({
-            message: use.t('message.input_phone'),
+            message: use.t('message.sms_send_success'),
             duration: 2 * 1000,
           });
+          data.count = 60;
+          data.show = false;
+          setInterval(() => {
+
+          }, 1000);
         }).catch();
       } else {
         ElMessage.error({

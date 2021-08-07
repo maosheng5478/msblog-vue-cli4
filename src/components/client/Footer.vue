@@ -31,7 +31,7 @@ export default defineComponent({
   animation: Gradient 10s ease infinite;
 }
 
-.text {
+.text{
 }
 
 @keyframes bganimation {

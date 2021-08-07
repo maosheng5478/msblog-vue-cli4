@@ -80,14 +80,13 @@
 
 <script>
 import { defineComponent, reactive, onMounted } from 'vue';
-import Language from '../language';
 import { commonUse } from '../../utils/use';
 import { logout } from '../../api/login';
 import { ElMessage } from 'element-plus';
 
 export default defineComponent({
   name: 'TopBar',
-  components: { Language },
+  components: { },
   setup() {
     const use = commonUse();
     const data = reactive({
