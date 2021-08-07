@@ -11,9 +11,11 @@ Unicon.add(unicon);
 
 export function registerGlobComp(app) {
   app.use(Unicon);
+  // element plus component register
   components.forEach(component => {
     app.component(component.name, component);
   });
+  // customized Components register
   myComponents.forEach(component => {
     app.component(component.name, component);
   });

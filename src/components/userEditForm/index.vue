@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import { ElMessage } from 'element-plus';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { defineComponent, reactive, ref } from 'vue';
 import { sendSMS } from '../../api/code';
 import { commonUse } from '../../utils/use';
@@ -111,7 +111,7 @@ export default defineComponent({
     const data = reactive({
       rules: rules,
       show: true,
-      count: '',
+      count: 0,
       formData: props.formData,
       sexOptions: [{
         label: '男',
@@ -122,7 +122,13 @@ export default defineComponent({
       }],
     });
     function handleConfirm() {
-      close();
+      ElMessageBox.confirm('是否修改信息?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }).then(() => {
+        close();
+      });
     }
     function close() {
       emit('closeForm');
@@ -140,8 +146,13 @@ export default defineComponent({
           });
           data.count = 60;
           data.show = false;
-          setInterval(() => {
-
+          const timer = setInterval(() => {
+            if (data.count > 0 && data.count <= 60) {
+              data.count--;
+            } else {
+              clearInterval(timer);
+              data.show = true;
+            }
           }, 1000);
         }).catch();
       } else {

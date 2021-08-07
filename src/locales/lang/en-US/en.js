@@ -31,5 +31,7 @@ export default {
     introduction: 'Introduction',
     input_phone: 'Please enter the correct cell phone number ',
     sms_send_success: 'Captcha sent successfully',
+    edit_info: 'Editing Information',
+    user_info: ' User Info'
   }
 };

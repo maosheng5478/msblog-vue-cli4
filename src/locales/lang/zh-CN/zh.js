@@ -31,5 +31,7 @@ export default {
     introduction: '简介',
     input_phone: '请输入手机号',
     sms_send_success: '验证码发送成功',
+    edit_info: '编辑信息',
+    user_info: '用户信息',
   }
 };

@@ -20,12 +20,16 @@
     <el-card class="user_info_o">
       <el-row :gutter="20">
         <el-col :span="4">
-          <p class="title_info">用户信息 </p>
+          <p class="title_info">{{ $t('message.user_info') }} </p>
         </el-col>
         <el-col :span="18" class="text_el-col name-font" />
         <el-col :span="2" class="text_el-col name-font">
           <el-button type="text" icon="el-icon-edit" @click="data.dialogFormVisible = true">{{ $t('message.edit') }}</el-button>
-          <user-edit-form title="sss" v-model="data.dialogFormVisible" :form-data="data.formData" />
+          <user-edit-form
+            :title="use.t('message.edit_info')"
+            v-model="data.dialogFormVisible"
+            :form-data="data.formData"
+            @close-form="data.dialogFormVisible = false" />
         </el-col>
       </el-row>
       <!-- 分割线 -->
@@ -77,10 +81,9 @@
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
 import { commonUse } from '../../../utils/use';
-import userEditForm from '../../../components/userEditForm';
 export default defineComponent({
   name: 'UserInfo',
-  components: { userEditForm },
+  components: { },
   setup() {
     const use = commonUse();
     const data = reactive({
