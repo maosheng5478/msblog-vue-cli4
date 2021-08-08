@@ -6,12 +6,13 @@ import { modules } from './modules';
 export default createStore({
   state() {
     return {
+      user_id: 0,
       username: '',
       code_key: '',
       user_token: '',
       user_phone: '',
       user_email: '',
-      user_sex: '',
+      user_sex: -1,
       user_introduction: '',
       user_createTime: '',
     };
@@ -20,6 +21,9 @@ export default createStore({
   actions,
   modules,
   getters: {
+    getUserId(state) {
+      return state.user_id !== 0 ? state.user_id : sessionStorage.getItem('userId');
+    },
     getCodeKey(state) {
       return state.code_key;
     },
@@ -36,7 +40,7 @@ export default createStore({
       return state.username ? state.username : sessionStorage.getItem('username');
     },
     getUserSex(state) {
-      return state.user_sex ? state.user_sex : sessionStorage.getItem('sex');
+      return state.user_sex !== -1 ? state.user_sex : sessionStorage.getItem('sex');
     },
     getUserCreateTime(state) {
       return state.user_createTime ? state.user_createTime : sessionStorage.getItem('createTime');

@@ -18,11 +18,12 @@
         <el-col :span="24">
           <el-form-item label="性别：" prop="sex">
             <el-radio-group v-model="data.formData.sex" size="medium">
+              {{ data.formData.sex }}
               <el-radio
                 v-for="(item, index) in data.sexOptions"
                 :key="index"
-                :label="item.value"
-                :disabled="item.disabled">{{ item.label }}</el-radio>
+                :label="item.label"
+                :disabled="item.disabled">{{ item.value }}</el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -88,6 +89,7 @@
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { defineComponent, reactive, ref } from 'vue';
 import { sendSMS } from '../../api/code';
+import { userUpdata } from '../../api/user';
 import { commonUse } from '../../utils/use';
 import rules from './rules';
 export default defineComponent({
@@ -96,8 +98,9 @@ export default defineComponent({
     dialogFormVisible: { type: Boolean, default: false },
     title: { type: String, default: '' },
     formData: {
+      id: 0,
       username: { type: String, default: '' },
-      sex: '男',
+      sex: 0,
       email: '',
       phone: '',
       code: '',
@@ -114,10 +117,10 @@ export default defineComponent({
       count: 0,
       formData: props.formData,
       sexOptions: [{
-        label: '男',
+        label: 1,
         value: '男'
       }, {
-        label: '女',
+        label: 0,
         value: '女'
       }],
     });
@@ -127,7 +130,16 @@ export default defineComponent({
         cancelButtonText: '取消',
         type: 'warning',
       }).then(() => {
-        close();
+        userUpdata(data.formData).then((res) => {
+          use.store.commit('setUserId', res.id);
+          use.store.commit('setUserPhone', res.phone);
+          use.store.commit('setUsername', res.username);
+          use.store.commit('setUserEmail', res.email);
+          use.store.commit('setUserSex', res.sex);
+          use.store.commit('setUserIntroduction', res.introduction);
+          use.store.commit('setCreateTime', res.createTime);
+          close();
+        }).catch();
       });
     }
     function close() {

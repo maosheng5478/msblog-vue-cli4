@@ -12,7 +12,11 @@
           <p class="name-p">
             {{ use.store.getters.getUsername }}
           </p>
-          <span><el-tag size="small" type="warning">{{ use.store.getters.getUserSex }}</el-tag></span>
+          <span>
+            <el-tag size="small" :type="Number(use.store.getters.getUserSex) === 1 ? '' : 'danger'">
+              {{ sexEnum[use.store.getters.getUserSex] }}
+            </el-tag>
+          </span>
         </el-col>
         <el-col :span="2"> <el-tag effect="dark">系统管理员</el-tag></el-col>
       </el-row>
@@ -81,6 +85,7 @@
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
 import { commonUse } from '../../../utils/use';
+import sexEnum from '../../../utils/enum/sexEnum';
 export default defineComponent({
   name: 'UserInfo',
   components: { },
@@ -90,6 +95,7 @@ export default defineComponent({
       userName: { type: String, default: 'username' },
       dialogFormVisible: false,
       formData: {
+        id: use.store.getters.getUserId,
         username: use.store.getters.getUsername,
         sex: use.store.getters.getUserSex,
         email: use.store.getters.getEmail,
@@ -109,6 +115,7 @@ export default defineComponent({
     return {
       data,
       use,
+      sexEnum,
     };
   },
 });

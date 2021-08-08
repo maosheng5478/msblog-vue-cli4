@@ -103,15 +103,12 @@ export default defineComponent({
     const handleLogin = function () {
       data.form.key = use.store.getters.getCodeKey;
       loginByPwd(data.form).then((res) => {
+        use.store.commit('setUserId', res.id);
         use.store.commit('setUserPhone', res.phone);
         use.store.commit('setUsername', res.username);
         use.store.commit('setUserEmail', res.email);
         use.store.commit('setUserToken', res.token);
-        if (res.sex === 0) {
-          use.store.commit('setUserSex', '女');
-        } else if (res.sex === 1) {
-          use.store.commit('setUserSex', '男');
-        }
+        use.store.commit('setUserSex', res.sex);
         use.store.commit('setUserIntroduction', res.introduction);
         use.store.commit('setCreateTime', res.createTime);
         ElMessage.success({

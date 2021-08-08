@@ -35,7 +35,7 @@ service.interceptors.response.use(
           duration: 2 * 1000,
         });
         if (data.code === 401) {
-          useage().router.go('/login');
+          useage().router.replace('/login');
         }
         return reject(data.msg || 'error');
       } else {

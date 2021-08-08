@@ -33,5 +33,7 @@ export default {
     sms_send_success: '验证码发送成功',
     edit_info: '编辑信息',
     user_info: '用户信息',
+    male: '男',
+    female: '女',
   }
 };
