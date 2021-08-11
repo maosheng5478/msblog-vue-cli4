@@ -12,13 +12,16 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const auth = to.meta.requireAuth;
-  if (auth) {
+  if (to.meta.requireAuth) {
     if (hasUser()) {
       authentication().then(() => {
         next();
       }).catch((err) => {
         console.log('autherr', err);
+        next({
+          path: 'login',
+          query: { redirect: to.fullPath }
+        });
       });
     } else {
       ElMessage({

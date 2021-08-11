@@ -9,6 +9,7 @@
         <el-avatar icon="el-icon-user-solid" size="small" />
         <template #dropdown>
           <el-dropdown-menu>
+            <el-dropdown-item command="home">{{ $t('message.blog_home') }}</el-dropdown-item>
             <el-dropdown-item>{{ $t('message.change_password') }}</el-dropdown-item>
             <el-dropdown-item command="logout">{{ $t('message.logout') }}</el-dropdown-item>
           </el-dropdown-menu>
@@ -31,17 +32,24 @@ export default defineComponent({
     const use = commonUse();
     const data = reactive({});
     const handleCommand = function (command) {
-      if (command === 'logout') {
-        logout().then(() => {
-          ElMessage.success({
-            message: use.t('message.successful_logout'),
-            type: 'success',
-            duration: 2 * 1000,
+      switch (command) {
+        case 'logout':
+          logout().then(() => {
+            ElMessage.success({
+              message: use.t('message.successful_logout'),
+              type: 'success',
+              duration: 2 * 1000,
+            });
+          }).catch((err) => {
+            console.error(err);
           });
-        }).catch((err) => {
-          console.error(err);
-        });
-        openFullScreen(use.getI18nItem('being_exited'), goHome);
+          openFullScreen(use.getI18nItem('being_exited'), goHome);
+          break;
+        case 'home':
+          use.routerGo('/home');
+          break;
+        default:
+          break;
       }
     };
     const goHome = () => {

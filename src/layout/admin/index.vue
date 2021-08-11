@@ -5,6 +5,7 @@
     </el-header>
     <el-container :class="{'folded':data.folded}">
       <el-aside class="ly_left">
+        <permission-menu />
         <span class="btn_folded" @click="data.folded = !data.folded">
           <i :class="data.folded ? 'el-icon-s-fold' : 'el-icon-s-unfold'" style="color: #888" />
         </span>
@@ -23,10 +24,11 @@
 
 <script>
 import { defineComponent, reactive } from 'vue';
-import AdminHeader from '../../components/admin/AdminHeader.vue';
+import AdminHeader from '@/components/admin/AdminHeader.vue';
+import PermissionMenu from '../../components/admin/PermissionMenu.vue';
 
 export default defineComponent({
-  components: { AdminHeader },
+  components: { AdminHeader, PermissionMenu },
   name: 'AdminLayout',
   setup() {
     const data = reactive({
@@ -54,7 +56,7 @@ export default defineComponent({
 .ly_main{
   padding: 0;
   margin-left: #{$admin_aside_width};
-  background-color: #fff;
+  background-color: #f0f2f5;
   margin-top: #{$admin_header_height};
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;
@@ -72,6 +74,7 @@ export default defineComponent({
   padding: 0;
   margin-left: #{$admin_aside_width};
   transition: margin-left 0.4s;
+  background-color: #f0f2f5;
   -webkit-transition: margin-left 0.4s;
 }
 .btn_folded{

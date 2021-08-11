@@ -46,7 +46,7 @@ module.exports = {
     'vue/require-valid-default-prop': 'error',
     // 保证computed属性中有return语句
     'vue/return-in-computed-property': 'error',
-    // 强制校验 template 根节点
-    'vue/valid-template-root': 'error',
+    // 校验 template 根节点
+    'vue/valid-template-root': 0,
   }
 }

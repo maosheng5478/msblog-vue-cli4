@@ -5,10 +5,18 @@
 </template>
 
 <script>
-import { defaultCompent } from 'vue';
-export default defaultCompent({
+import { defineComponent } from 'vue';
+import { getMenu } from '@/api/menu';
+
+export default defineComponent({
   name: 'Menu',
   setup() {
+    const handleMenu = function () {
+      getMenu().then(res => {
+
+      }).catch();
+    };
+    handleMenu();
     return { };
   }
 });

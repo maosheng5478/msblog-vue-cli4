@@ -35,5 +35,6 @@ export default {
     user_info: '用户信息',
     male: '男',
     female: '女',
+    blog_home: '博客主页',
   }
 };

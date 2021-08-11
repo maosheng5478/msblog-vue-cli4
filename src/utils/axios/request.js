@@ -44,6 +44,9 @@ service.interceptors.response.use(
     });
   }, error => {
     const response = error.response;
+    if (response.status === 401 || response.data.code === 401) {
+      useage().router.go('/login');
+    }
     if (response === null || response === '') {
       ElMessage({
         showClose: true,
