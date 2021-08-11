@@ -45,6 +45,12 @@ service.interceptors.response.use(
   }, error => {
     const response = error.response;
     if (response.status === 401 || response.data.code === 401) {
+      ElMessage({
+        showClose: true,
+        message: response.data.data,
+        type: 'error',
+        duration: 2 * 1000,
+      });
       useage().router.go('/login');
     }
     if (response === null || response === '') {

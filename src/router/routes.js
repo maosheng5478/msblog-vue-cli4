@@ -60,6 +60,14 @@ export const routerList = [
           requireAuth: true
         }
       },
+      {
+        path: '/admin/dd',
+        name: 'dasrd',
+        component: () => import('../views/admin/user-manage'),
+        meta: {
+          requireAuth: true
+        }
+      },
     ]
   }
 ];
