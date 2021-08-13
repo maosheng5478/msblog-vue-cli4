@@ -26,15 +26,30 @@
 import { defineComponent, reactive } from 'vue';
 import AdminHeader from '@/components/admin/AdminHeader.vue';
 import PermissionMenu from '../../components/admin/PermissionMenu.vue';
+import { getMenu } from '@/api/menu';
+import { formatRoutes } from '@/utils/asyncRouters';
+import { commonUse } from '../../utils/use';
 
 export default defineComponent({
   components: { AdminHeader, PermissionMenu },
   name: 'AdminLayout',
   setup() {
+    const use = commonUse();
     const data = reactive({
       folded: false,
     });
-    return { data };
+    const handleMenu = function () {
+      getMenu().then(res => {
+        const fmtRoutes = formatRoutes(res);
+        fmtRoutes.forEach(item => {
+          use.router.addRoute(item);
+        });
+        // data.adminMenus = fmtRoutes;
+        use.store.commit('setPermissionMenu', fmtRoutes);
+      }).catch();
+    };
+    handleMenu();
+    return { data, handleMenu };
   }
 });
 </script>

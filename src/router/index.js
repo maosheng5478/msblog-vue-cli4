@@ -45,5 +45,3 @@ router.afterEach((to, from, next) => {
 });
 
 export default router;
-
-console.log(router);

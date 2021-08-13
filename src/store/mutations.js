@@ -33,5 +33,8 @@ export const mutations = {
   setCreateTime(state, createTime) {
     state.user_createTime = createTime;
     sessionStorage.setItem('createTime', createTime);
+  },
+  setPermissionMenu(state, menu) {
+    state.permission_menu = menu;
   }
 };

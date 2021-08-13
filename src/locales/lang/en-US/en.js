@@ -35,6 +35,7 @@ export default {
     user_info: 'User Info',
     male: 'Male',
     female: 'Female',
-    blog_home: 'Blog Home'
+    blog_home: 'Blog Home',
+    modified_successfully: 'Modified successfully'
   }
 };

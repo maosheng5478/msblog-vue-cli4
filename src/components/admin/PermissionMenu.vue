@@ -39,7 +39,7 @@
 <script>
 import { defineComponent, reactive } from 'vue';
 import { getMenu } from '@/api/menu';
-import { formatRoutes } from '../../utils/routers';
+import { formatRoutes } from '../../utils/asyncRouters';
 import { commonUse } from '../../utils/use';
 
 export default defineComponent({
@@ -51,7 +51,7 @@ export default defineComponent({
     const use = commonUse();
     const router = use.router;
     const data = reactive({
-      adminMenus: [],
+      adminMenus: use.store.getters.getPermissionMenu,
     });
     const handleMenu = function () {
       getMenu().then(res => {
@@ -59,14 +59,14 @@ export default defineComponent({
         fmtRoutes.forEach(item => {
           router.addRoute(item);
         });
-        data.adminMenus = fmtRoutes;
-        console.log(data.adminMenus);
+        // data.adminMenus = fmtRoutes;
       }).catch();
     };
     const currentPath = function () {
       return use.router.currentRoute;
     };
     handleMenu();
+    console.log(use.store.getters.getPermissionMenu);
     return {
       use,
       data,

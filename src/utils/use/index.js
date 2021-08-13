@@ -14,9 +14,17 @@ export const useage = () => {
     const itemString = 'message.' + param;
     return proxy.$t(itemString);
   }
+  const clearLoginInfo = function() {
+    sessionStorage.clear();
+    store.commit('setUserPhone', '');
+    store.commit('setUsername', '');
+    store.commit('setUserEmail', '');
+    store.commit('setUserToken', '');
+  };
   return {
     router,
     getI18nItemByProxy,
+    clearLoginInfo,
     store,
   };
 };

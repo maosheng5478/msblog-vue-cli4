@@ -15,6 +15,7 @@ export default createStore({
       user_sex: -1,
       user_introduction: '',
       user_createTime: '',
+      permission_menu: [],
     };
   },
   mutations,
@@ -48,5 +49,8 @@ export default createStore({
     getUserIntroduction(state) {
       return state.user_introduction ? state.user_introduction : sessionStorage.getItem('introduction');
     },
+    getPermissionMenu(state) {
+      return state.permission_menu;
+    }
   }
 });

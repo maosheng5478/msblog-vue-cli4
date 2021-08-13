@@ -35,6 +35,7 @@ service.interceptors.response.use(
           duration: 2 * 1000,
         });
         if (data.code === 401) {
+          useage().clearLoginInfo();
           useage().router.replace('/login');
         }
         return reject(data.msg || 'error');
@@ -51,6 +52,7 @@ service.interceptors.response.use(
         type: 'error',
         duration: 2 * 1000,
       });
+      useage().clearLoginInfo();
       useage().router.go('/login');
     }
     if (response === null || response === '') {

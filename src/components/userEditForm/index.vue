@@ -16,14 +16,12 @@
           </el-form-item>
         </el-col>
         <el-col :span="24">
-          <el-form-item label="性别：" prop="sex">
+          <el-form-item label="性别：">
             <el-radio-group v-model="data.formData.sex" size="medium">
-              {{ data.formData.sex }}
               <el-radio
                 v-for="(item, index) in data.sexOptions"
                 :key="index"
-                :label="item.label"
-                :disabled="item.disabled">{{ item.value }}</el-radio>
+                :label="item.label">{{ item.value }}</el-radio>
             </el-radio-group>
           </el-form-item>
         </el-col>
@@ -117,10 +115,10 @@ export default defineComponent({
       count: 0,
       formData: props.formData,
       sexOptions: [{
-        label: 1,
+        label: '1',
         value: '男'
       }, {
-        label: 0,
+        label: '0',
         value: '女'
       }],
     });
@@ -139,6 +137,10 @@ export default defineComponent({
           use.store.commit('setUserIntroduction', res.introduction);
           use.store.commit('setCreateTime', res.createTime);
           close();
+          ElMessage.success({
+            message: use.t('message.modified_successfully'),
+            duration: 2 * 1000,
+          });
         }).catch();
       });
     }

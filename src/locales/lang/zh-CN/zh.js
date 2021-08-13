@@ -36,5 +36,6 @@ export default {
     male: '男',
     female: '女',
     blog_home: '博客主页',
+    modified_successfully: '修改成功',
   }
 };
