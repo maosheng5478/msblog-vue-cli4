@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { routerList } from './routes';
-import { hasUser } from './user';
 import { authentication } from '../api/login';
 import { ElMessage } from 'element-plus';
+import { getMenu } from '../api/menu';
+import { formatRoutes } from '../utils/asyncRouters';
+import store from '../store';
 
 const routes = routerList;
 
@@ -12,10 +14,25 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  // if (to.matched.length === 0){ router.push(to.path).then(() => {
+  //   getMenu().then(res => {
+  //     const fmtRoutes = formatRoutes(res);
+  //     fmtRoutes.forEach(item => {
+  //       router.addRoute(item);
+  //     });
+  //     console.log('setPermissionMenu', router.getRoutes());
+  //     store.commit('setPermissionMenu', fmtRoutes);
+  //     console.log('router', store.getters.getPermissionMenu);
+  //   }).catch();
+  // }); }
   if (to.meta.requireAuth) {
-    if (hasUser()) {
+    if (store.getters.getToken) {
       authentication().then(() => {
-        next();
+        if (store.state.permission_menu.length === 0) {
+          next({ ...to, replace: true });
+        } else {
+          next();
+        }
       }).catch((err) => {
         console.log('autherr', err);
         next({
@@ -43,5 +60,7 @@ router.afterEach((to, from, next) => {
   document.querySelector('body').setAttribute('style', 'overflow: auto !important;');
   window.scrollTo(0, 0);
 });
-
+router.onError((handler) => {
+  console.log('error:', handler);
+});
 export default router;

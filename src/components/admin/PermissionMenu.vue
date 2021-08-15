@@ -5,7 +5,7 @@
       mode="vertical"
       :collapse="isCollapse">
       <div
-        v-for="(item,i) in data.adminMenus"
+        v-for="(item,i) in menu"
         :key="i">
         <el-submenu
           v-if="item.children.length !== 0"
@@ -37,36 +37,31 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue';
-import { getMenu } from '@/api/menu';
-import { formatRoutes } from '../../utils/asyncRouters';
+import { defineComponent, onMounted, reactive } from 'vue';
 import { commonUse } from '../../utils/use';
 
 export default defineComponent({
   name: 'Menu',
   props: {
     isCollapse: { type: Boolean, default: false },
+    menu: { default: [] },
   },
-  setup() {
+  setup(props) {
     const use = commonUse();
-    const router = use.router;
     const data = reactive({
-      adminMenus: use.store.getters.getPermissionMenu,
+      adminMenus: [],
     });
     const handleMenu = function () {
-      getMenu().then(res => {
-        const fmtRoutes = formatRoutes(res);
-        fmtRoutes.forEach(item => {
-          router.addRoute(item);
-        });
-        // data.adminMenus = fmtRoutes;
-      }).catch();
+      data.adminMenus = use.store.state.permission_menu;
+      console.log('pe', use.store.state.permission_menu);
+      console.log('data', props.menu);
     };
     const currentPath = function () {
       return use.router.currentRoute;
     };
     handleMenu();
-    console.log(use.store.getters.getPermissionMenu);
+    onMounted(() => {
+    });
     return {
       use,
       data,

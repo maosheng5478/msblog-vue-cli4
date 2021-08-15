@@ -36,5 +36,6 @@ export const mutations = {
   },
   setPermissionMenu(state, menu) {
     state.permission_menu = menu;
+    // sessionStorage.setItem('menu', JSON.stringify(menu));
   }
 };

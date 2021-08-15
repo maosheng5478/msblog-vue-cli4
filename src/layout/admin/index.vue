@@ -5,7 +5,7 @@
     </el-header>
     <el-container :class="{'folded':data.folded}">
       <el-aside class="ly_left">
-        <permission-menu />
+        <permission-menu :menu="data.menu" />
         <span class="btn_folded" @click="data.folded = !data.folded">
           <i :class="data.folded ? 'el-icon-s-fold' : 'el-icon-s-unfold'" style="color: #888" />
         </span>
@@ -23,11 +23,9 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, onMounted, reactive } from 'vue';
 import AdminHeader from '@/components/admin/AdminHeader.vue';
 import PermissionMenu from '../../components/admin/PermissionMenu.vue';
-import { getMenu } from '@/api/menu';
-import { formatRoutes } from '@/utils/asyncRouters';
 import { commonUse } from '../../utils/use';
 
 export default defineComponent({
@@ -37,20 +35,28 @@ export default defineComponent({
     const use = commonUse();
     const data = reactive({
       folded: false,
+      menu: [],
     });
-    const handleMenu = function () {
-      getMenu().then(res => {
-        const fmtRoutes = formatRoutes(res);
-        fmtRoutes.forEach(item => {
-          use.router.addRoute(item);
-        });
-        // data.adminMenus = fmtRoutes;
-        use.store.commit('setPermissionMenu', fmtRoutes);
-      }).catch();
+    // const handleMenu = function () {
+    //   getMenu().then(res => {
+    //     const fmtRoutes = formatRoutes(res);
+    //     fmtRoutes.forEach(item => {
+    //       use.router.addRoute(item);
+    //     });
+    //     data.menu = fmtRoutes;
+    //     use.store.commit('setPermissionMenu', fmtRoutes);
+    //     console.log('fm', fmtRoutes);
+    //   }).catch();
+    // };
+    // handleMenu();
+    onMounted(() => {
+    });
+    data.menu = use.store.state.permission_menu;
+    return {
+      data,
+      use,
     };
-    handleMenu();
-    return { data, handleMenu };
-  }
+  },
 });
 </script>
 

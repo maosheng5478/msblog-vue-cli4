@@ -5,7 +5,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i; // 开启gzip压缩(可选)
 
 module.exports = {
-  publicPath: './',
+  publicPath: '/',
   runtimeCompiler: true, // 是否使用包含运行时编译器的 Vue 构建版本
   chainWebpack: config => {
     config.resolve.alias // 添加别名

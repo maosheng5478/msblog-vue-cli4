@@ -50,7 +50,8 @@ export default createStore({
       return state.user_introduction ? state.user_introduction : sessionStorage.getItem('introduction');
     },
     getPermissionMenu(state) {
-      return state.permission_menu;
+      return state.permission_menu.length !== 0 ? state.permission_menu : [];
+      // : sessionStorage.getItem('menu') === null ? [] : JSON.parse(sessionStorage.getItem('menu'));
     }
   }
 });

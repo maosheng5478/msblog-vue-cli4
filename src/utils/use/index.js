@@ -1,7 +1,6 @@
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
-import { getCurrentInstance } from 'vue';
 
 export function logItem() {
   console.log(commonUse().store);
@@ -9,11 +8,6 @@ export function logItem() {
 export const useage = () => {
   const router = useRouter();
   const store = useStore();
-  const { proxy } = getCurrentInstance();
-  function getI18nItemByProxy(param) {
-    const itemString = 'message.' + param;
-    return proxy.$t(itemString);
-  }
   const clearLoginInfo = function() {
     sessionStorage.clear();
     store.commit('setUserPhone', '');
@@ -23,7 +17,6 @@ export const useage = () => {
   };
   return {
     router,
-    getI18nItemByProxy,
     clearLoginInfo,
     store,
   };
