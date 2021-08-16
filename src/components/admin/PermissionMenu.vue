@@ -53,8 +53,8 @@ export default defineComponent({
     });
     const handleMenu = function () {
       data.adminMenus = use.store.state.permission_menu;
-      console.log('pe', use.store.state.permission_menu);
-      console.log('data', props.menu);
+      // console.log('pe', use.store.state.permission_menu);
+      // console.log('data', props.menu);
     };
     const currentPath = function () {
       return use.router.currentRoute;

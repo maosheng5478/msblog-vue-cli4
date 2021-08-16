@@ -2,6 +2,7 @@ import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import store from '@/store';
 import { useage } from '../use';
+import { useRouter } from 'vue-router';
 
 const use = store;
 const service = axios.create({
@@ -45,17 +46,8 @@ service.interceptors.response.use(
     });
   }, error => {
     const response = error.response;
-    if (response.status === 401 || response.data.code === 401) {
-      ElMessage({
-        showClose: true,
-        message: response.data.data,
-        type: 'error',
-        duration: 2 * 1000,
-      });
-      useage().clearLoginInfo();
-      useage().router.go('/login');
-    }
-    if (response === null || response === '') {
+    console.log(response);
+    if (response === undefined) {
       ElMessage({
         showClose: true,
         message: '服务器链接异常',
@@ -63,12 +55,24 @@ service.interceptors.response.use(
         duration: 2 * 1000,
       });
     } else {
-      ElMessage({
-        showClose: true,
-        message: error.response.data.msg || 'server error',
-        type: 'error',
-        duration: 2 * 1000,
-      });
+      if (response.status === 401 || response.data.code === 401) {
+        ElMessage({
+          showClose: true,
+          message: response.data.data,
+          type: 'error',
+          duration: 2 * 1000,
+        });
+        useRouter().replace('/login').then();
+        // useage().router.replace('/login').then();
+        useage().clearLoginInfo();
+      } else {
+        ElMessage({
+          showClose: true,
+          message: error.response.data.msg || 'server error',
+          type: 'error',
+          duration: 2 * 1000,
+        });
+      }
     }
   }
 );

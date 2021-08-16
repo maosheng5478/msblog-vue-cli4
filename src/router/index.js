@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { routerList } from './routes';
-import { authentication } from '../api/login';
+import { authentication } from '@/api/login';
 import { ElMessage } from 'element-plus';
-import { getMenu } from '../api/menu';
-import { formatRoutes } from '../utils/asyncRouters';
+import { getMenu } from '@/api/menu';
+import { formatRoutes } from '@/utils/asyncRouters';
 import store from '../store';
 
 const routes = routerList;
@@ -13,22 +13,13 @@ const router = createRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  // if (to.matched.length === 0){ router.push(to.path).then(() => {
-  //   getMenu().then(res => {
-  //     const fmtRoutes = formatRoutes(res);
-  //     fmtRoutes.forEach(item => {
-  //       router.addRoute(item);
-  //     });
-  //     console.log('setPermissionMenu', router.getRoutes());
-  //     store.commit('setPermissionMenu', fmtRoutes);
-  //     console.log('router', store.getters.getPermissionMenu);
-  //   }).catch();
-  // }); }
+router.beforeEach(async (to, from, next) => {
+  console.log(to.path);
   if (to.meta.requireAuth) {
     if (store.getters.getToken) {
-      authentication().then(() => {
+      await authentication().then(async () => {
         if (store.state.permission_menu.length === 0) {
+          await handleMenu();
           next({ ...to, replace: true });
         } else {
           next();
@@ -47,13 +38,16 @@ router.beforeEach((to, from, next) => {
         type: 'error',
         duration: 2 * 1000,
       });
-      next({
-        path: 'login',
-        query: { redirect: to.fullPath }
-      });
+      next({ path: 'login', query: { redirect: to.fullPath } });
     }
   } else {
     next();
+  }
+  if (to.path.includes('/admin')) {
+    await handleMenu();
+    console.log(router.getRoutes());
+    // next({ ...to, replace: true });
+    // return;
   }
 });
 router.afterEach((to, from, next) => {
@@ -64,3 +58,14 @@ router.onError((handler) => {
   console.log('error:', handler);
 });
 export default router;
+
+const handleMenu = async function() {
+  await getMenu().then(res => {
+    const fmtRoutes = formatRoutes(res);
+    fmtRoutes.forEach(item => {
+      router.addRoute(item);
+    });
+    store.commit('setPermissionMenu', fmtRoutes);
+    console.log('router2', store.getters.getPermissionMenu);
+  }).catch();
+};

@@ -1,4 +1,4 @@
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import { useI18n } from 'vue-i18n';
 
@@ -6,7 +6,10 @@ export function logItem() {
   console.log(commonUse().store);
 }
 export const useage = () => {
+  // 实例化路由
   const router = useRouter();
+  // 路由参数
+  const route = useRoute();
   const store = useStore();
   const clearLoginInfo = function() {
     sessionStorage.clear();
@@ -17,6 +20,7 @@ export const useage = () => {
   };
   return {
     router,
+    route,
     clearLoginInfo,
     store,
   };
@@ -24,6 +28,8 @@ export const useage = () => {
 export function commonUse() {
   const { t } = useI18n();
   const router = useRouter();
+  // 路由参数
+  const route = useRoute();
   const store = useStore();
   const clearLoginInfo = function() {
     sessionStorage.clear();
@@ -42,6 +48,7 @@ export function commonUse() {
   return {
     t,
     router,
+    route,
     store,
     getI18nItem,
     clearLoginInfo,
