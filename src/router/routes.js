@@ -1,4 +1,5 @@
 import Layout from '@/layout/client';
+import Page404 from '@/views/page/404';
 export const routerList = [
   {
     path: '/',
@@ -61,5 +62,10 @@ export const routerList = [
         }
       }
     ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: '404',
+    component: Page404,
   }
 ];
