@@ -46,8 +46,7 @@ service.interceptors.response.use(
     });
   }, error => {
     const response = error.response;
-    console.log(response);
-    if (response === undefined) {
+    if (response === undefined || error.status === 404) {
       ElMessage({
         showClose: true,
         message: '服务器链接异常',
