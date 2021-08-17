@@ -2,8 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { routerList } from './routes';
 import { authentication } from '@/api/login';
 import { ElMessage } from 'element-plus';
-import { getMenu } from '@/api/menu';
-import { formatRoutes } from '@/utils/asyncRouters';
+import { handleMenu } from '@/router/permission';
 import store from '../store';
 
 const routes = routerList;
@@ -14,22 +13,18 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
-  console.log(to.path);
   if (to.meta.requireAuth) {
     if (store.getters.getToken) {
       await authentication().then(async () => {
         if (store.state.permission_menu.length === 0) {
-          await handleMenu();
+          await handleMenu(router);
           next({ ...to, replace: true });
         } else {
           next();
         }
       }).catch((err) => {
-        console.log('autherr', err);
-        next({
-          path: 'login',
-          query: { redirect: to.fullPath }
-        });
+        console.log('auth err', err);
+        next({ path: 'login', query: { redirect: to.fullPath } });
       });
     } else {
       ElMessage({
@@ -41,31 +36,23 @@ router.beforeEach(async (to, from, next) => {
       next({ path: 'login', query: { redirect: to.fullPath } });
     }
   } else {
+    // 解决刷新空白，跳转admin主页
+    if (to.path.includes('/admin/')) {
+      await handleMenu(router);
+      next({ path: 'admin' });
+      return;
+    }
     next();
   }
-  if (to.path.includes('/admin')) {
-    await handleMenu();
-    console.log(router.getRoutes());
-    // next({ ...to, replace: true });
-    // return;
-  }
 });
+
 router.afterEach((to, from, next) => {
   document.querySelector('body').setAttribute('style', 'overflow: auto !important;');
   window.scrollTo(0, 0);
 });
-router.onError((handler) => {
-  console.log('error:', handler);
-});
-export default router;
 
-const handleMenu = async function() {
-  await getMenu().then(res => {
-    const fmtRoutes = formatRoutes(res);
-    fmtRoutes.forEach(item => {
-      router.addRoute(item);
-    });
-    store.commit('setPermissionMenu', fmtRoutes);
-    console.log('router2', store.getters.getPermissionMenu);
-  }).catch();
-};
+router.onError((handler) => {
+  console.log('router-error:', handler);
+});
+
+export default router;
