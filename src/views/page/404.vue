@@ -26,7 +26,7 @@
           <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
         </div>
         <div class="box_astronaut">
-          <img class="object_astronaut" src="http://salehriaz.com/404Page/img/astronaut.svg" width="140px">
+          <img class="object_astronaut" src="@/assets/astronaut.svg" width="140px">
         </div>
       </div>
       <div class="glowing_stars">
@@ -35,11 +35,8 @@
         <div class="star" />
         <div class="star" />
         <div class="star" />
-
       </div>
-
     </div>
-
   </body>
 </template>
 
@@ -55,7 +52,7 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500');
+@import "../../style/fonts.scss";
 
 @-moz-keyframes rocket-movement { 100% {-moz-transform: translate(1200px,-600px);} }
 @-webkit-keyframes rocket-movement {100% {-webkit-transform: translate(1200px,-600px); } }
@@ -278,10 +275,8 @@ li a:hover {
 }
 
 .stars{
-  background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
-  background-repeat: repeat;
   background-size: contain;
-  background-position: left top;
+  background: url(http://salehriaz.com/404Page/img/overlay_stars.svg) repeat left top;
 }
 
 .glowing_stars .star{
