@@ -22,7 +22,7 @@ export function registerGlobComp(app) {
   plugins.forEach(plugin => {
     app.use(plugin);
   });
-  const req = require.context('./icons', false, /\.svg$/);
-  const requireAll = requireContext => requireContext.keys().map(requireContext);
-  requireAll(req);
+  // const req = require.context('./icons', false, /\.svg$/);
+  // const requireAll = requireContext => requireContext.keys().map(requireContext);
+  // requireAll(req);
 }

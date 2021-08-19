@@ -1,47 +1,52 @@
 <template>
-  <svg :class="svgClass" aria-hidden="true">
+  <svg
+    class="svgIcon"
+    :class="[className, { pointer }]"
+    :style="{ '--icon-color': color, '--icon-size': variables[iconSize] }"
+  >
     <use :xlink:href="iconName" />
   </svg>
 </template>
 
 <script>
 import { computed, defineComponent } from 'vue';
+import variables from '@/style/variables.scss';
+
 export default defineComponent({
   name: 'SvgIcon',
   props: {
-    iconClass: {
+    name: {
       type: String,
       required: true
     },
-    className: {
-      type: String,
-      default: ''
-    }
+    color: String,
+    className: String,
+    size: String,
+    pointer: Boolean
   },
   setup(props) {
-    const iconName = computed(() => `#icon-${props.iconClass}`);
-    const svgClass = computed(() => {
-      if (props.className) {
-        return 'svg-icon ' + props.className;
-      } else {
-        return 'svg-icon';
-      }
-    });
+    const iconName = computed(() => `#icon-${props.name}`);
+    const iconSize = computed(() => `SIZE_${props.size?.toUpperCase()}`);
+
     return {
       iconName,
-      svgClass,
+      iconSize,
+      variables
     };
-  },
+  }
 });
 </script>
 
-<style scoped>
-.svg-icon {
+<style lang="scss">
+.svgIcon {
   width: 1em;
   height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
   overflow: hidden;
-}
+  fill: var(--icon-color);
+  font-size: var(--icon-size);
 
+  &.pointer {
+    cursor: pointer;
+  }
+}
 </style>

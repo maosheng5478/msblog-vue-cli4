@@ -26,7 +26,9 @@
           <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
         </div>
         <div class="box_astronaut">
-          <img class="object_astronaut" src="@/assets/astronaut.svg" width="140px">
+          <!-- <img class="object_astronaut" src="@/assets/astronaut.svg" width="140px"> -->
+          <svg-icon name="astronaut" size="7xl" />
+          <astronaut class="object_astronaut" />
         </div>
       </div>
       <div class="glowing_stars">
@@ -41,14 +43,13 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from 'vue';
+import svgIcon from '../../components/public/svgIcon';
+import astronaut from './as.vue';
+export default defineComponent({
   name: 'page404',
-  computed: {
-    message () {
-      return 'The webmaster said that you can not enter this page...';
-    }
-  }
-};
+  components: { svgIcon, astronaut },
+});
 </script>
 
 <style scoped>
