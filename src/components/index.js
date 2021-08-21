@@ -1,7 +1,7 @@
 import { elementComponents, elementPlugins } from './public/element-plus';
 import Unicon from 'vue-unicons';
 import { unicon } from './public/unicon';
-import { customComp } from './register';
+import { customComp, svgIconComp } from './register';
 
 // element plus config
 const components = elementComponents;
@@ -19,10 +19,10 @@ export function registerGlobComp(app) {
   myComponents.forEach(component => {
     app.component(component.name, component);
   });
+  svgIconComp.forEach(svg => {
+    app.component(svg.name, svg);
+  });
   plugins.forEach(plugin => {
     app.use(plugin);
   });
-  // const req = require.context('./icons', false, /\.svg$/);
-  // const requireAll = requireContext => requireContext.keys().map(requireContext);
-  // requireAll(req);
 }

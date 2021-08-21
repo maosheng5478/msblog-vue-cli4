@@ -23,12 +23,11 @@
         <img class="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px">
         <div class="earth-moon">
           <img class="object_earth" src="http://salehriaz.com/404Page/img/earth.svg" width="100px">
-          <img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">
+          <!--<img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">-->
+          <moon class="object_moon" width="80px" />
         </div>
         <div class="box_astronaut">
-          <!-- <img class="object_astronaut" src="@/assets/astronaut.svg" width="140px"> -->
-          <svg-icon name="astronaut" size="7xl" />
-          <astronaut class="object_astronaut" />
+          <astronaut class="object_astronaut" width="100px" />
         </div>
       </div>
       <div class="glowing_stars">
@@ -44,11 +43,8 @@
 
 <script>
 import { defineComponent } from 'vue';
-import svgIcon from '../../components/public/svgIcon';
-import astronaut from './as.vue';
 export default defineComponent({
   name: 'page404',
-  components: { svgIcon, astronaut },
 });
 </script>
 

@@ -1,4 +1,9 @@
 <template>
+
+  <!--Handcrafted by Saleh Riaz Qureshi - www.salehriaz.com - salehriazq@gmail.com - dribbble.com/salehriaz - behance.net/salehriaz - twitter.com/salehriazq - facebook.com/salehriazqureshi - instagram.com/salehriaz
+
+  Please use this SVG with attribution to the author i.e Saleh Riaz
+  -->
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 177.65 227.57">
     <defs>
       <linearGradient
@@ -604,29 +609,46 @@
 
 <script>
 import { defineComponent } from 'vue';
+
 export default defineComponent({
-  name: 'As',
+  name: 'Astronaut',
 });
 </script>
 
- <style>
-.cls-1{fill:#f2f2f2;}
-.cls-2{fill:url(#linear-gradient);}
-.cls-12,.cls-3{fill:#dedfe0;}
-.cls-4{fill:#c6c6c6;}
-.cls-5{fill:#e8e8e8;}
-.cls-6{isolation:isolate;}
-.cls-7{fill:#b5b5b5;}
-.cls-8{fill:#969696;}
-.cls-9{clip-path:url(#clip-path);}
-.cls-10{fill:#ffcb39;}
-.cls-11,.cls-26{fill:#fff;}
-.cls-11{mix-blend-mode:soft-light;}
-.cls-12{mix-blend-mode:multiply;}
-.cls-13{clip-path:url(#clip-path-2);}
-.cls-14{fill:#5208bc;}.cls-15{fill:#d3d3d3;}.cls-16{fill:url(#linear-gradient-3);}.cls-17{fill:#fcfcfc;}
-.cls-18{clip-path:url(#clip-path-3);}.cls-19{fill:#c4c4c4;}.cls-20{fill:#adadad;}.cls-21{clip-path:url(#clip-path-4);}
-.cls-22{clip-path:url(#clip-path-5);}.cls-23{fill:#b2b2b2;}.cls-24{clip-path:url(#clip-path-6);}
-.cls-25{clip-path:url(#clip-path-7);}
-.cls-27{fill:#7f1bbf;}.cls-28{fill:url(#linear-gradient-4);}.cls-29{fill:#d8d8d8;}
+<style>
+.cls-1 {fill: #f2f2f2;}
+.cls-2 {
+  fill: url(#linear-gradient);
+}
+.cls-12, .cls-3 {fill: #dedfe0;}
+.cls-4 {fill: #c6c6c6;}
+.cls-5 {fill: #e8e8e8;}
+.cls-6 {isolation: isolate;}
+.cls-7 {fill: #b5b5b5;}
+.cls-8 {fill: #969696;}
+.cls-9 {clip-path: url(#clip-path);}
+.cls-10 {fill: #ffcb39;}
+.cls-11, .cls-26 {fill: #fff;}
+.cls-11 {
+  mix-blend-mode: soft-light;
+}
+.cls-12 {
+  mix-blend-mode: multiply;
+}
+.cls-13 {clip-path: url(#clip-path-2);}
+.cls-14 {fill: #5208bc;}
+.cls-15 {fill: #d3d3d3;}
+.cls-16 {fill: url(#linear-gradient-3);}
+.cls-17 {fill: #fcfcfc;}
+.cls-18 {clip-path: url(#clip-path-3);}
+.cls-19 {fill: #c4c4c4;}
+.cls-20 {fill: #adadad;}
+.cls-21 {clip-path: url(#clip-path-4);}
+.cls-22 {clip-path: url(#clip-path-5);}
+.cls-23 {fill: #b2b2b2;}
+.cls-24 {clip-path: url(#clip-path-6);}
+.cls-25 {clip-path: url(#clip-path-7);}
+.cls-27 {fill: #7f1bbf;}
+.cls-28 {fill: url(#linear-gradient-4);}
+.cls-29 {fill: #d8d8d8;}
 </style>
