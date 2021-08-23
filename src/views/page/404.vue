@@ -17,13 +17,21 @@
       </div>
       <div class="central-body">
         <img class="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px">
-        <a href="http://salehriaz.com/404Page/404.html" class="btn-go-home" target="_blank">GO BACK HOME</a>
+        <!-- <a href="http://salehriaz.com/404Page/404.html" class="btn-go-home" target="_blank">GO BACK HOME</a> -->
+        <div>
+          <router-link to="/home"  class="btn-go-home">{{ $t('message.go_blog_home_back') }}</router-link>
+          <button @click="handleGoBack" class="btn-go-home">{{ $t('message.go_back') }}</button>
+        </div>
+      </div>
+      <div>
+        <!-- <router-link to="/home"  class="btn-go-home">{{ $t('message.go_blog_home_back') }}</router-link>
+        <el-button @click="handleGoBack" class="btn-go-home">{{ $t('message.go_back') }}</el-button> -->
+        <!-- <router-link @click="handleGoBack" class="btn-go-home">{{ $t('message.go_back') }}</router-link> -->
       </div>
       <div class="objects">
         <img class="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px">
         <div class="earth-moon">
           <img class="object_earth" src="http://salehriaz.com/404Page/img/earth.svg" width="100px">
-          <!--<img class="object_moon" src="http://salehriaz.com/404Page/img/moon.svg" width="80px">-->
           <moon class="object_moon" width="80px" />
         </div>
         <div class="box_astronaut">
@@ -43,8 +51,19 @@
 
 <script>
 import { defineComponent } from 'vue';
+import { commonUse } from '../../utils/use';
 export default defineComponent({
   name: 'page404',
+  setup() {
+    const use = commonUse();
+    const handleGoBack = function() {
+      use.router.back();
+    };
+    return {
+      use,
+      handleGoBack,
+    };
+  },
 });
 </script>
 
@@ -112,6 +131,7 @@ html, body{
   background-size: cover;
   background: url(http://salehriaz.com/404Page/img/bg_purple.png) repeat-x left top;
   height: 100%;
+  background-color: #473462;
   overflow: hidden;
 
 }

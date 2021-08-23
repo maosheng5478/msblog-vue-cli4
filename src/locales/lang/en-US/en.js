@@ -36,6 +36,9 @@ export default {
     male: 'Male',
     female: 'Female',
     blog_home: 'Blog Home',
-    modified_successfully: 'Modified successfully'
+    modified_successfully: 'Modified successfully',
+    go_blog_home_back: 'GO BACK HOME',
+    go_back: 'GO BACK',
+    question_feedback: 'Question Feedback',
   }
 };

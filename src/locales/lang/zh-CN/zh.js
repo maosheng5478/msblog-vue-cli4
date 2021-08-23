@@ -37,5 +37,8 @@ export default {
     female: '女',
     blog_home: '博客主页',
     modified_successfully: '修改成功',
+    go_blog_home_back: '返回博客主页',
+    go_back: '返回上一页',
+    question_feedback: '问题反馈',
   }
 };
