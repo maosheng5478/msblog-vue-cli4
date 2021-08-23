@@ -5,7 +5,9 @@
     </el-header>
     <el-container :class="{'folded':data.folded}">
       <el-aside class="ly_left">
-        <permission-menu :menu="data.menu" />
+        <el-scrollbar>
+          <permission-menu :menu="data.menu" :isCollapse="data.folded" />
+        </el-scrollbar>
         <span class="btn_folded" @click="data.folded = !data.folded">
           <i :class="data.folded ? 'el-icon-s-fold' : 'el-icon-s-unfold'" style="color: #888" />
         </span>
@@ -84,6 +86,7 @@ export default defineComponent({
 }
 .ly_left{
   position: fixed;
+  padding: 0;
   width: #{$admin_aside_width} !important;
   top: #{$admin_header_height};
   height: calc(100vh - 60px);
@@ -99,9 +102,9 @@ export default defineComponent({
   -webkit-transition: margin-left 0.4s;
 }
 .btn_folded{
-  position: absolute;
+  position: fixed;
   display: block;
-  width: 100%;
+  width: #{$admin_aside_width};
   height: 40px;
   bottom: 0;
   font-size: 24px;
@@ -109,9 +112,14 @@ export default defineComponent({
   text-align: center;
   background-color: #e4e7ed;
   cursor: pointer;
+  transition: width 0.4s;
+  -webkit-transition: width 0.4s;
 }
 .folded .ly_main{
   margin-left: 64px;
+}
+.folded .btn_folded{
+  width: 64px !important;
 }
 .folded .ly_left{
   width: 64px !important;

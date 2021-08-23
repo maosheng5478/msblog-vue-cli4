@@ -12,8 +12,8 @@
           :index="(i).toString()"
           style="text-align: left;">
           <template #title>
+            <i :class="item.icon" />
             <span>
-              <i :class="item.icon" />
               {{ item.nameZh }}
             </span>
           </template>
@@ -29,7 +29,7 @@
           :key="item.path"
           :route="item.path">
           <i :class="item.icon" />
-          {{ item.nameZh }}
+          <template #title> {{ item.nameZh }}</template>
         </el-menu-item>
       </div>
     </el-menu>
@@ -50,11 +50,10 @@ export default defineComponent({
     const use = commonUse();
     const data = reactive({
       adminMenus: [],
+      collapse: props.isCollapse,
     });
     const handleMenu = function () {
       data.adminMenus = use.store.state.permission_menu;
-      // console.log('pe', use.store.state.permission_menu);
-      // console.log('data', props.menu);
     };
     const currentPath = function () {
       return use.router.currentRoute;
@@ -72,6 +71,22 @@ export default defineComponent({
 });
 </script>
 
-<style>
-
+<style lang="scss">
+.el-menu{
+  border-right: 0;
+}
+.data.collapse .el-menu span {
+  display: none;
+}
+/*由于 element-ui 的<el-menu>标签本身希望里面嵌套的是
+<el-menu-item>,<el-submenu>,<el-menu-item-group>之一，
+但是却嵌套了<div>,而导致收折就隐藏不了文字*/
+/*隐藏文字*/
+.el-menu--collapse  .el-submenu__title span{
+  display: none;
+}
+/*隐藏 > */
+.el-menu--collapse  .el-submenu__title .el-submenu__icon-arrow{
+   display: none;
+}
 </style>
