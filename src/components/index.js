@@ -4,7 +4,7 @@ import { unicon } from './public/unicon';
 import { customComp, svgIconComp } from './register';
 
 // element plus config
-const components = elementComponents;
+const ElComponents = elementComponents;
 const plugins = elementPlugins;
 const myComponents = customComp;
 Unicon.add(unicon);
@@ -12,7 +12,7 @@ Unicon.add(unicon);
 export function registerGlobComp(app) {
   app.use(Unicon);
   // element plus component register
-  components.forEach(component => {
+  ElComponents.forEach(component => {
     app.component(component.name, component);
   });
   // customized Components register

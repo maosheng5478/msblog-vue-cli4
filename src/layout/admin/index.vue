@@ -39,18 +39,6 @@ export default defineComponent({
       folded: false,
       menu: [],
     });
-    // const handleMenu = function () {
-    //   getMenu().then(res => {
-    //     const fmtRoutes = formatRoutes(res);
-    //     fmtRoutes.forEach(item => {
-    //       use.router.addRoute(item);
-    //     });
-    //     data.menu = fmtRoutes;
-    //     use.store.commit('setPermissionMenu', fmtRoutes);
-    //     console.log('fm', fmtRoutes);
-    //   }).catch();
-    // };
-    // handleMenu();
     onMounted(() => {
     });
     data.menu = use.store.state.permission_menu;
@@ -68,12 +56,14 @@ export default defineComponent({
   background-color: #e4e7ed;
   margin: 0;
   padding: 0;
+  z-index: 999;
   position: fixed;
   width: 100%;
   .context_header{
     margin: 0;
     padding: 0;
     text-align: center;
+    position: fixed;
   }
 }
 .ly_main{
