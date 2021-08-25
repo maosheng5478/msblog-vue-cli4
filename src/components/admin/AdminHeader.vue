@@ -4,6 +4,9 @@
       <img src="../../assets/icon2.png" class="icon_logo">
       <div class="logo_text">{{ $t('message.title') }}</div>
     </div>
+    <div class="ah_lang">
+      <language class="change" />
+    </div>
     <div class="user_img">
       <el-dropdown style="" @command="handleCommand">
         <el-avatar icon="el-icon-user-solid" size="small" />
@@ -65,14 +68,18 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'src/style/constant.scss';
-.user_img{
+.ah_lang{
   line-height: #{$admin_header_height};
+  text-align: center;
+  position: absolute;
+  right: 70px;
   display: block;
   float: right;
-  align-items: center;
-  top: 10px;
+  .change{
+    color: #000 !important;
+  }
 }
 .left_logo{
   float: left;
@@ -111,6 +118,10 @@ export default defineComponent({
   text-align: center;
   position: absolute;
   right: 30px;
+  display: block;
+  float: right;
+  align-items: center;
+  top: 10px;
 }
 
 </style>

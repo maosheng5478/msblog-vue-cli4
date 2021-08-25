@@ -1,8 +1,6 @@
 <template>
   <div class="bg">
     <div class="wrapper">a
-      {{ $t('router.dashboard') }}
-      {{ $t('message.tags') }}
     </div>
     <br><br><br><br><br><br><br><br><br>hi
     <br><br><br><br><br><br><br><br><br>hi
@@ -30,7 +28,6 @@ export default defineComponent({
 
 <style>
 .wrapper {
-  width: 100vw;
   place-items: center;
 }
 .wrapper .chart {
