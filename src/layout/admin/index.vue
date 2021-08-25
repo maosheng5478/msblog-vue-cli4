@@ -14,9 +14,13 @@
       </el-aside>
       <el-container class="other_as">
         <el-main class="ly_main">
-          <transition name="el-fade-in">
-            <router-view />
-          </transition>
+          <router-view v-slot="{ Component }">
+            <transition name="el-fade-in" :duration="1000">
+              <keep-alive>
+                <component :is="Component" />
+              </keep-alive>
+            </transition>
+          </router-view>
         </el-main>
         <el-footer class="ly_footer">
           Copyright@2020-2021 by MS

@@ -14,12 +14,12 @@
           <template #title>
             <i :class="item.icon" />
             <span>
-              {{ item.nameZh }}
+              {{ $t('router.'+item.nameZh) }}
             </span>
           </template>
           <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path">
             <i :class="child.icon" />
-            {{ child.nameZh }}
+            {{ $t('router.'+child.nameZh) }}
           </el-menu-item>
         </el-submenu>
         <el-menu-item
@@ -29,7 +29,7 @@
           :key="item.path"
           :route="item.path">
           <i :class="item.icon" />
-          <template #title> {{ item.nameZh }}</template>
+          <template #title> {{ $t('router.'+item.nameZh) }}</template>
         </el-menu-item>
       </div>
     </el-menu>

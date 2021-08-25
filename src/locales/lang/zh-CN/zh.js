@@ -40,5 +40,19 @@ export default {
     go_blog_home_back: '返回博客主页',
     go_back: '返回上一页',
     question_feedback: '问题反馈',
+  },
+  router: {
+    dashboard: '首页',
+    content_management: '内容管理',
+    user_management: '用户管理',
+    personal_information: '个人信息',
+    security_settings: 'Security Settings',
+    user_information: 'User Information',
+    role_configuration: '角色配置',
+    advertising_management: 'Advertising Management',
+    article_management: 'Article Management',
+    message_management: 'Message Management',
+    log_output: '日志输出',
+    system_management: '系统管理',
   }
 };
