@@ -1,7 +1,6 @@
 <template>
-  <div class="bg">this is admin home page
-    <div class="wrapper">
-      <BarChart class="chart" />
+  <div class="bg">
+    <div class="wrapper">a
     </div>
     <br><br><br><br><br><br><br><br><br>hi
     <br><br><br><br><br><br><br><br><br>hi
@@ -15,10 +14,9 @@
 
 <script>
 import { defineComponent, reactive } from 'vue';
-import BarChart from './components/barChart';
 export default defineComponent({
   name: 'Dashboard',
-  components: { BarChart },
+  components: { },
   setup() {
     const data = reactive({});
     return {

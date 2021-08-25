@@ -12,9 +12,11 @@
           <i :class="data.folded ? 'el-icon-s-fold' : 'el-icon-s-unfold'" style="color: #888" />
         </span>
       </el-aside>
-      <el-container>
+      <el-container class="other_as">
         <el-main class="ly_main">
-          <router-view />
+          <transition name="el-fade-in">
+            <router-view />
+          </transition>
         </el-main>
         <el-footer class="ly_footer">
           Copyright@2020-2021 by MS
@@ -68,11 +70,15 @@ export default defineComponent({
 }
 .ly_main{
   padding: 0;
+  min-height: calc(100vh - 60px);
   margin-left: #{$admin_aside_width};
   background-color: #f0f2f5;
   margin-top: #{$admin_header_height};
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;
+}
+.other_as{
+  background-color: #f0f2f5;
 }
 .ly_left{
   position: fixed;
