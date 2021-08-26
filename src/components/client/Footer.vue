@@ -1,6 +1,6 @@
 <template>
   <div class="gradient_body">
-    <div class="text">
+    <div class="bottom_text">
       Copyright @2020-2021 by MS
     </div>
   </div>
@@ -31,7 +31,10 @@ export default defineComponent({
   animation: Gradient 10s ease infinite;
 }
 
-.text{
+.bottom_text{
+  text-decoration: none;
+  text-align: center;
+  margin-top: auto;
 }
 
 @keyframes bganimation {

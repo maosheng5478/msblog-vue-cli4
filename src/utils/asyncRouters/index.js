@@ -1,4 +1,4 @@
-import Layout from '../../layout/admin';
+import AdminLayout from '../../layout/admin';
 
 export function formatRoutes(routers) {
   const fmtRoutes = [];
@@ -8,13 +8,14 @@ export function formatRoutes(routers) {
     }
     const fmtRoute = {
       path: route.path,
-      component: route.component === 'layout' ? Layout // : () => import('@/views/admin' + route.component),
+      component: route.component === 'layout' ? AdminLayout // : () => import('@/views/admin' + route.component),
         : resolve => require('@/views/admin' + route.component + '/index.vue'),
       nameZh: route.nameZh,
       icon: route.icon,
       children: route.children,
       meta: {
-        requireAuth: true
+        requireAuth: true,
+        title: route.nameZh,
       }
     };
     fmtRoutes.push(fmtRoute);

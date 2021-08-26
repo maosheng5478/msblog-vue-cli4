@@ -76,13 +76,13 @@ export default defineComponent({
   padding: 0;
   min-height: calc(100vh - 60px);
   margin-left: #{$admin_aside_width};
-  background-color: #f0f2f5;
+  background-color: rgb(247, 249, 251);
   margin-top: #{$admin_header_height};
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;
 }
 .other_as{
-  background-color: #f0f2f5;
+  background-color:rgb(247, 249, 251); //#f0f2f5
 }
 .ly_left{
   position: fixed;
@@ -101,7 +101,7 @@ export default defineComponent({
   padding: 0;
   margin-left: #{$admin_aside_width};
   transition: margin-left 0.4s;
-  background-color: #f0f2f5;
+  background-color: rgb(247, 249, 251);
   -webkit-transition: margin-left 0.4s;
 }
 .btn_folded{
