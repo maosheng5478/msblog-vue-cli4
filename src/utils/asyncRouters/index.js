@@ -16,9 +16,10 @@ export function formatRoutes(routers) {
       meta: {
         requireAuth: true,
         title: route.nameZh,
+        tag: route.component === 'layout' ? 'dashboard' : route.nameZh,
       }
     };
     fmtRoutes.push(fmtRoute);
   });
   return fmtRoutes;
-}
+};

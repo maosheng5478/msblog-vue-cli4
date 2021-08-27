@@ -14,6 +14,7 @@
       </el-aside>
       <el-container class="other_as">
         <el-main class="ly_main">
+          <bread-crumb />
           <router-view v-slot="{ Component }">
             <transition name="el-fade-in" :duration="1000">
               <keep-alive>
@@ -35,9 +36,10 @@ import { defineComponent, onMounted, reactive } from 'vue';
 import AdminHeader from '@/components/admin/AdminHeader.vue';
 import PermissionMenu from '../../components/admin/PermissionMenu.vue';
 import { commonUse } from '../../utils/use';
+import BreadCrumb from '../../components/admin/BreadCrumb.vue';
 
 export default defineComponent({
-  components: { AdminHeader, PermissionMenu },
+  components: { AdminHeader, PermissionMenu, BreadCrumb },
   name: 'AdminLayout',
   setup() {
     const use = commonUse();

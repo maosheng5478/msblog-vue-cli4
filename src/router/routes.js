@@ -50,7 +50,9 @@ export const routerList = [
     component: () => import('@/layout/admin'),
     redirect: '/admin/dashboard',
     meta: {
-      requireAuth: true
+      requireAuth: true,
+      title: 'dashboard',
+      tag: 'dashboard',
     },
     children: [
       {

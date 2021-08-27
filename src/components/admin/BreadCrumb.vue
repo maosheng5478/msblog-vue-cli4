@@ -12,36 +12,43 @@
   </el-breadcrumb> -->
   <el-breadcrumb separator-class="el-icon-arrow-right">
     <el-breadcrumb-item v-for="(item,index) in data.breadlist"  :key="index" :to="{ path: '/admin' }">
-      {{ item.meta.title }}
+      <span v-if="index == data.breadlist.length-1" class="no-redirect">{{ item.meta.tag }}</span>
+      <a v-else @click.prevent="handleLink(item)">{{ item.meta.tag }}</a>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
 <script>
-import { defineComponent, reactive, watch } from 'vue';
+import { defineComponent, onMounted, reactive, toRefs, watch } from 'vue';
 import { commonUse } from '../../utils/use';
+import { useRoute } from 'vue-router';
 // import { complie } from 'path-to-regexp';
 export default defineComponent({
   name: 'BreadCrumb',
   setup() {
     const use = commonUse();
+    const route = useRoute();
     const data = reactive({
       breadlist: [],
       getBreadcrumb() {
-        const matched = use.router.matched;
+        const matched = route.matched;
         data.breadlist = matched;
+        console.log(matched);
       }
     });
+    onMounted(() => {
+      data.getBreadcrumb();
+    });
     watch(
-      () => use.router,
-      (router) => {
+      () => route.matched,
+      (newVal, oldVal) => {
         data.getBreadcrumb();
-        console.log(router);
       }
     );
     return {
       use,
       data,
+      ...toRefs(data),
     };
   }
 });

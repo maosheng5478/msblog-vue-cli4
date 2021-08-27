@@ -61,7 +61,7 @@ service.interceptors.response.use(
           type: 'error',
           duration: 2 * 1000,
         });
-        useRouter().replace('/login').then();
+        useRouter().go('/login').then();
         // useage().router.replace('/login').then();
         useage().clearLoginInfo();
       } else {

@@ -6,7 +6,11 @@ export const handleMenu = async function(router) {
   await getMenu().then(res => {
     const fmtRoutes = formatRoutes(res);
     fmtRoutes.forEach(item => {
-      router.addRoute(item);
+      if (item.children.length !== 0) {
+        router.addRoute(item);
+      } else {
+        router.addRoute('Admin', item);
+      }
     });
     store.commit('setPermissionMenu', fmtRoutes);
   }).catch(e => {

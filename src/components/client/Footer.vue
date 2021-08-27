@@ -32,6 +32,7 @@ export default defineComponent({
 }
 
 .bottom_text{
+  font-size: 15px;
   text-decoration: none;
   text-align: center;
   margin-top: auto;
