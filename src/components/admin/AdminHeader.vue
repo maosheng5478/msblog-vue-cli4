@@ -5,7 +5,6 @@
       <div class="logo_text">{{ $t('message.title') }}</div>
     </div>
     <div class="ah_lang">
-      <bread-crumb />
       <language class="change" />
     </div>
     <div class="user_img">
@@ -29,11 +28,10 @@ import { commonUse } from '../../utils/use';
 import { openFullScreen } from '../loading';
 import { logout } from '../../api/login';
 import { ElMessage } from 'element-plus';
-import BreadCrumb from './BreadCrumb.vue';
 
 export default defineComponent({
   name: 'AdminHeader',
-  components: { BreadCrumb },
+  components: { },
   setup() {
     const use = commonUse();
     const data = reactive({});

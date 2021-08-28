@@ -14,7 +14,8 @@
       </el-aside>
       <el-container class="other_as">
         <el-main class="ly_main">
-          <bread-crumb />
+          <bread-crumb class="c_crumb" />
+          <el-divider />
           <router-view v-slot="{ Component }">
             <transition name="el-fade-in" :duration="1000">
               <keep-alive>
@@ -82,6 +83,12 @@ export default defineComponent({
   margin-top: #{$admin_header_height};
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;
+  .c_crumb{
+    margin: 5px;
+  }
+  .el-divider{
+    margin: 2px 0;
+  }
 }
 .other_as{
   background-color:rgb(247, 249, 251); //#f0f2f5

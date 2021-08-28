@@ -43,6 +43,7 @@ export default {
   },
   router: {
     dashboard: '首页',
+    undefined: '',
     content_management: '内容管理',
     user_management: '用户管理',
     personal_information: '个人信息',
