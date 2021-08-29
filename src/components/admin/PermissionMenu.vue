@@ -17,7 +17,11 @@
               {{ $t('router.'+item.nameZh) }}
             </span>
           </template>
-          <el-menu-item v-for="child in item.children" :key="child.path" :index="child.path">
+          <el-menu-item
+            v-for="child in item.children"
+            :key="child.path"
+            :index="child.path"
+            @click="handleClick(child)">
             <i :class="child.icon" />
             {{ $t('router.'+child.nameZh) }}
           </el-menu-item>
@@ -27,6 +31,7 @@
           :index="(i).toString()"
           style="text-align: left"
           :key="item.path"
+          @click="handleClick(item)"
           :route="item.path">
           <i :class="item.icon" />
           <template #title> {{ $t('router.'+item.nameZh) }}</template>
@@ -58,12 +63,21 @@ export default defineComponent({
     const currentPath = function () {
       return use.router.currentRoute;
     };
+    function handleClick(item) {
+      const tabs = {
+        path: item.path,
+        name: item.nameZh,
+        label: use.t('router.' + item.nameZh),
+      };
+      use.store.commit('selectMenu', tabs);
+    }
     handleMenu();
     onMounted(() => {
     });
     return {
       use,
       data,
+      handleClick,
       currentPath,
       handleMenu,
     };

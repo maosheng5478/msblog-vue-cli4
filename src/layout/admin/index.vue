@@ -15,6 +15,7 @@
       <el-container class="other_as">
         <el-main class="ly_main">
           <bread-crumb class="c_crumb" />
+          <TagView class="c_tag_view" />
           <el-divider />
           <router-view v-slot="{ Component }">
             <transition name="el-fade-in" :duration="1000">
@@ -38,9 +39,10 @@ import AdminHeader from '@/components/admin/AdminHeader.vue';
 import PermissionMenu from '../../components/admin/PermissionMenu.vue';
 import { commonUse } from '../../utils/use';
 import BreadCrumb from '../../components/admin/BreadCrumb.vue';
+import TagView from '../../components/admin/TagView';
 
 export default defineComponent({
-  components: { AdminHeader, PermissionMenu, BreadCrumb },
+  components: { TagView, AdminHeader, PermissionMenu, BreadCrumb },
   name: 'AdminLayout',
   setup() {
     const use = commonUse();
@@ -84,7 +86,10 @@ export default defineComponent({
   transition: margin-left 0.4s;
   -webkit-transition: margin-left 0.4s;
   .c_crumb{
-    margin: 5px;
+    margin: 10px;
+  }
+  .c_tag_view{
+   margin-left: 10px;
   }
   .el-divider{
     margin: 2px 0;

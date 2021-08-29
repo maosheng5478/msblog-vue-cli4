@@ -1,6 +1,6 @@
 <template>
   <div>
-    Template
+    log
   </div>
 </template>
 
