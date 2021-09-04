@@ -4,20 +4,36 @@
       <img src="../../assets/icon2.png" class="icon_logo">
       <div class="logo_text">{{ $t('message.title') }}</div>
     </div>
-    <div class="ah_lang">
-      <language class="change" />
-    </div>
-    <div class="user_img">
-      <el-dropdown style="" @command="handleCommand">
-        <el-avatar icon="el-icon-user-solid" size="small" />
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item command="home">{{ $t('message.blog_home') }}</el-dropdown-item>
-            <el-dropdown-item>{{ $t('message.change_password') }}</el-dropdown-item>
-            <el-dropdown-item command="logout">{{ $t('message.logout') }}</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+    <div class="ah_right">
+      <el-row
+        :gutter="10"
+        justify="space-around"
+        align="middle">
+        <el-col :span="5">
+          <el-tooltip effect="dark" :content="$t('message.blog_home')" placement="bottom-start">
+            <div @click="backHome">
+              <platform style="width: 1.3em; height: 1.3em; margin-right: 5px" />
+            </div>
+          </el-tooltip>
+        </el-col>
+        <el-col :span="12">
+          <language class="change" />
+        </el-col>
+        <el-col :span="7">
+          <div>
+            <el-dropdown style="" @command="handleCommand">
+              <el-avatar icon="el-icon-user-solid" size="small" />
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <!-- <el-dropdown-item command="home">{{ $t('message.blog_home') }}</el-dropdown-item> -->
+                  <el-dropdown-item>{{ $t('message.change_password') }}</el-dropdown-item>
+                  <el-dropdown-item command="logout">{{ $t('message.logout') }}</el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+          </div>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -28,10 +44,11 @@ import { commonUse } from '../../utils/use';
 import { openFullScreen } from '../loading';
 import { logout } from '../../api/login';
 import { ElMessage } from 'element-plus';
+import { Platform } from '@element-plus/icons';
 
 export default defineComponent({
   name: 'AdminHeader',
-  components: { },
+  components: { Platform },
   setup() {
     const use = commonUse();
     const data = reactive({});
@@ -49,21 +66,25 @@ export default defineComponent({
           });
           openFullScreen(use.getI18nItem('being_exited'), goHome);
           break;
-        case 'home':
-          use.routerGo('/home');
-          break;
+        // case 'home':
+        //   use.routerGo('/home');
+        //   break;
         default:
           break;
       }
     };
-    const goHome = () => {
+    const backHome = () => {
       use.routerGo('/home');
+    };
+    const goHome = () => {
+      backHome();
       use.clearLoginInfo();
     };
     return {
       data,
       use,
       handleCommand,
+      backHome,
     };
   },
 });
@@ -71,17 +92,23 @@ export default defineComponent({
 
 <style lang="scss">
 @import 'src/style/constant.scss';
-.ah_lang{
-  line-height: #{$admin_header_height};
+.el-row{
+    display:flex;
+    flex-wrap: wrap;
+    height: #{$admin_header_height};
+}
+
+.ah_right{
   text-align: center;
-  position: absolute;
-  right: 70px;
   display: block;
   float: right;
+  margin-right: 15px;
   .change{
     color: #000 !important;
+    margin: 0 !important;
   }
 }
+
 .left_logo{
   float: left;
   text-align: center;
@@ -112,17 +139,5 @@ export default defineComponent({
   text-decoration: none;
   text-align: center;
   margin-top: auto;
-  /* line-height:  $admin_header_height; */
 }
-.user_img{
-  line-height: #{$admin_header_height};
-  text-align: center;
-  position: absolute;
-  right: 30px;
-  display: block;
-  float: right;
-  align-items: center;
-  top: 10px;
-}
-
 </style>

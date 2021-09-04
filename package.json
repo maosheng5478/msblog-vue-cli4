@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
+    "@element-plus/icons": "^0.0.11",
     "@iconscout/vue-unicons-solid": "^0.0.2",
     "compression-webpack-plugin": "^5.0.0",
     "core-js": "^3.6.5",
