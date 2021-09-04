@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import store from '@/store';
-import { useage } from '../use';
-import { useRouter } from 'vue-router';
+import router from '@/router';
 
 const use = store;
 const service = axios.create({
@@ -36,8 +35,8 @@ service.interceptors.response.use(
           duration: 2 * 1000,
         });
         if (data.code === 401) {
-          useage().clearLoginInfo();
-          useage().router.replace('/login');
+          store.commit('clearUser');
+          router.replace('/login');
         }
         return reject(data.msg || 'error');
       } else {
@@ -61,9 +60,8 @@ service.interceptors.response.use(
           type: 'error',
           duration: 2 * 1000,
         });
-        useRouter().go('/login').then();
-        // useage().router.replace('/login').then();
-        useage().clearLoginInfo();
+        router.push('/login');
+        store.commit('clearUser');
       } else {
         ElMessage({
           showClose: true,

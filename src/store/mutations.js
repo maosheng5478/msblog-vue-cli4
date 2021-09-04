@@ -1,4 +1,14 @@
 export const mutations = {
+  clearUser(state) {
+    sessionStorage.clear();
+    state.user_id = '';
+    state.username = '';
+    state.user_token = '';
+    state.user_email = '';
+    state.user_phone = '';
+    state.user_introduction = '';
+    state.permission_menu = '';
+  },
   setUserId(state, id) {
     state.user_id = id;
     sessionStorage.setItem('userId', id);

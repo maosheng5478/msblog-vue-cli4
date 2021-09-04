@@ -84,15 +84,15 @@
 
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
-import { commonUse } from '../../../utils/use';
-import sexEnum from '../../../utils/enum/sexEnum';
+import { commonUse } from '@/utils/use';
+import { authentication } from '../../../api/login';
+import sexEnum from '@/utils/enum/sexEnum';
 export default defineComponent({
   name: 'UserInfo',
   components: { },
   setup() {
     const use = commonUse();
     const data = reactive({
-      userName: { type: String, default: 'username' },
       dialogFormVisible: false,
       formData: {
         id: use.store.getters.getUserId,
@@ -103,11 +103,10 @@ export default defineComponent({
         code: '',
         introduction: use.store.getters.getUserIntroduction,
       },
+      roleName: '',
     });
     const loadUserInfo = function() {
-      if (use.store.getters.getUserName) {
-        data.userName = use.store.getters.getUsername;
-      }
+      authentication().then();
     };
     onMounted(() => {
       loadUserInfo();

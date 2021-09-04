@@ -17,6 +17,8 @@ export const useage = () => {
     store.commit('setUsername', '');
     store.commit('setUserEmail', '');
     store.commit('setUserToken', '');
+    store.commit('setUserIntroduction', '');
+    store.commit('setPermissionMenu', []);
   };
   return {
     router,

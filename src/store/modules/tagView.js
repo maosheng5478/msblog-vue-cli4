@@ -21,7 +21,6 @@ const mutations = {
         state.tabsList.push(val);
       }
     }
-    // val.name === 'home' ? (state.currentMenu = null) : (state.currentMenu = val)
   },
   // 关闭标签
   closeTab(state, val) {
