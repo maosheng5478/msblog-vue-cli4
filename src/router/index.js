@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { routerList } from './routes';
 import { authentication } from '@/api/login';
 import { ElMessage } from 'element-plus';
-import { handleMenu } from '@/router/permission';
+import { handleMenu } from './permission';
 import store from '../store';
 
 const routes = routerList;

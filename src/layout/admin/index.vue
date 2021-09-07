@@ -17,13 +17,15 @@
           <bread-crumb class="c_crumb" />
           <TagView class="c_tag_view" />
           <el-divider />
-          <router-view v-slot="{ Component }">
-            <transition name="el-fade-in" :duration="1000">
-              <keep-alive>
-                <component :is="Component" />
-              </keep-alive>
-            </transition>
-          </router-view>
+          <div style="padding: 10px">
+            <router-view v-slot="{ Component }">
+              <transition name="el-fade-in" :duration="1000">
+                <keep-alive>
+                  <component :is="Component" />
+                </keep-alive>
+              </transition>
+            </router-view>
+          </div>
         </el-main>
         <el-footer class="ly_footer">
           Copyright@2020-2021 by MS

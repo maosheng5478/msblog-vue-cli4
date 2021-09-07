@@ -27,6 +27,10 @@ export default {
     edit: '编辑',
     phone: '手机号',
     email: '邮箱',
+    username: '用户名',
+    sex: '性别',
+    role: '用户角色',
+    operation: '操作',
     registration_time: '注册时间',
     introduction: '简介',
     input_phone: '请输入手机号',
@@ -40,6 +44,7 @@ export default {
     go_blog_home_back: '返回博客主页',
     go_back: '返回上一页',
     question_feedback: '问题反馈',
+    add_user: '添加用户',
   },
   router: {
     dashboard: '首页',
@@ -55,5 +60,7 @@ export default {
     message_management: '留言管理',
     log_output: '日志输出',
     system_management: '系统管理',
+    tags_management: '标签管理',
+    article_categories: '文章分类',
   }
 };

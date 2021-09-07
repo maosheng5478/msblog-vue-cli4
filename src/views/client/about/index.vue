@@ -22,6 +22,7 @@ export default defineComponent({
 .a_banner{
   height: 100vh;
   overflow: hidden;
+  text-align: center;
   background: #fff url('https://z3.ax1x.com/2021/07/20/WN4VVP.jpg') no-repeat fixed center center;
   .a_title{
     color: #fff;

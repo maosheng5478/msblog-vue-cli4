@@ -27,6 +27,10 @@ export default {
     edit: 'Edit',
     phone: 'Phone',
     email: 'Email',
+    username: 'Username',
+    sex: 'Sex',
+    role: 'Role',
+    operation: 'Operation',
     registration_time: 'Registration Time',
     introduction: 'Introduction',
     input_phone: 'Please enter the correct cell phone number ',
@@ -40,6 +44,7 @@ export default {
     go_blog_home_back: 'GO BACK HOME',
     go_back: 'GO BACK',
     question_feedback: 'Question Feedback',
+    add_user: 'ADD USER',
   },
   router: {
     dashboard: 'Dashboard',
@@ -54,5 +59,7 @@ export default {
     message_management: 'Message Management',
     log_output: 'Log output',
     system_management: 'System Management',
+    tags_management: 'Tags Management',
+    article_categories: 'Article Categories',
   }
 };

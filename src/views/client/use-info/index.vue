@@ -14,11 +14,11 @@
           </p>
           <span>
             <el-tag size="small" :type="Number(use.store.getters.getUserSex) === 1 ? '' : 'danger'">
-              {{ sexEnum[use.store.getters.getUserSex] }}
+              {{ Enum.sexEnum[use.store.getters.getUserSex] }}
             </el-tag>
           </span>
         </el-col>
-        <el-col :span="2"> <el-tag effect="dark">系统管理员</el-tag></el-col>
+        <el-col :span="2"> <el-tag effect="dark">{{ data.roleName }}</el-tag></el-col>
       </el-row>
     </el-card>
     <el-card class="user_info_o">
@@ -85,8 +85,9 @@
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
 import { commonUse } from '@/utils/use';
-import { authentication } from '../../../api/login';
-import sexEnum from '@/utils/enum/sexEnum';
+import { authentication } from '@/api/login';
+import { getRole } from '@/api/user-info';
+import { Enum } from '@/utils/enum';
 export default defineComponent({
   name: 'UserInfo',
   components: { },
@@ -107,6 +108,9 @@ export default defineComponent({
     });
     const loadUserInfo = function() {
       authentication().then();
+      getRole().then((res) => {
+        data.roleName = Enum.roleEnum[res];
+      });
     };
     onMounted(() => {
       loadUserInfo();
@@ -114,7 +118,7 @@ export default defineComponent({
     return {
       data,
       use,
-      sexEnum,
+      Enum,
     };
   },
 });
@@ -124,6 +128,7 @@ export default defineComponent({
 .ui_banner{
   height: 100vh;
   overflow: hidden;
+  text-align: center;
   background: #fff url('https://z3.ax1x.com/2021/07/20/WNTxpT.jpg') no-repeat fixed center center;
   .ui_title{
     color: #fff;
@@ -142,6 +147,9 @@ export default defineComponent({
   border-radius: 8px;
   box-shadow: 0 4px 8px 4px rgb(7 17 27 / 6%);
   transition: all 0.3s;
+  .el-row{
+    height: auto;
+  }
   .name-p{
     margin-top: 8px;
   }

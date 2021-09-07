@@ -21,6 +21,7 @@ export default defineComponent({
 .t_banner{
   height: 100vh;
   overflow: hidden;
+  text-align: center;
   background: #fff url('https://z3.ax1x.com/2021/07/20/WN4ZUf.jpg') no-repeat fixed center center;
   .t_title{
     color: #fff;

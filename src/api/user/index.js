@@ -2,7 +2,7 @@ import request from '@/utils/axios/request';
 
 const Api = {
   userInsert: '/user/add',
-  userUpdata: '/user/update',
+  userUpdate: '/user/update',
 };
 
 export function userInsert(params) {
@@ -13,9 +13,9 @@ export function userInsert(params) {
   });
 }
 
-export function userUpdata(params) {
+export function userUpdate(params) {
   return request({
-    url: Api.userUpdata,
+    url: Api.userUpdate,
     method: 'post',
     data: params,
   });

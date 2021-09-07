@@ -1,4 +1,4 @@
-import { getMenu } from '@/api/menu';
+import { getMenu } from '@/api/user-info';
 import { formatRoutes } from '@/utils/asyncRouters';
 import store from '@store';
 

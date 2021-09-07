@@ -86,9 +86,9 @@
 <script>
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { defineComponent, reactive, ref } from 'vue';
-import { sendSMS } from '../../api/code';
-import { userUpdata } from '../../api/user';
-import { commonUse } from '../../utils/use';
+import { sendSMS } from '@/api/code';
+import { userUpdate } from '@/api/user';
+import { commonUse } from '@/utils/use';
 import rules from './rules';
 export default defineComponent({
   name: 'UserEditForm',
@@ -128,7 +128,7 @@ export default defineComponent({
         cancelButtonText: '取消',
         type: 'warning',
       }).then(() => {
-        userUpdata(data.formData).then((res) => {
+        userUpdate(data.formData).then((res) => {
           use.store.commit('setUserId', res.id);
           use.store.commit('setUserPhone', res.phone);
           use.store.commit('setUsername', res.username);

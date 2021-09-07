@@ -16,7 +16,7 @@
         @click="changeMenu(tag)"
         :effect="handleEffect(tag)"
       >
-        {{ tag.label }}
+        {{ $t('router.'+ tag.name) }}
       </el-tag>
     </ScrollPane>
   </div>

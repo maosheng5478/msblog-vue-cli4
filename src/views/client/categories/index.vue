@@ -24,6 +24,7 @@ export default defineComponent({
 .c_banner{
   height: 100vh;
   overflow: hidden;
+  text-align: center;
   background: #fff url('https://z3.ax1x.com/2021/07/20/WN4nPS.jpg') left top no-repeat;
   .c_title{
     color: #fff;
