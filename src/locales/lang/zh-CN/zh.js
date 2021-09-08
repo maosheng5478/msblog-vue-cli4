@@ -31,6 +31,7 @@ export default {
     sex: '性别',
     role: '用户角色',
     operation: '操作',
+    delete: '删除',
     registration_time: '注册时间',
     introduction: '简介',
     input_phone: '请输入手机号',
@@ -45,6 +46,9 @@ export default {
     go_back: '返回上一页',
     question_feedback: '问题反馈',
     add_user: '添加用户',
+    deselect: '取消选择',
+    batch_delete: '批量删除',
+    No: '序号',
   },
   router: {
     dashboard: '首页',

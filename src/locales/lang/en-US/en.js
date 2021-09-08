@@ -31,6 +31,7 @@ export default {
     sex: 'Sex',
     role: 'Role',
     operation: 'Operation',
+    delete: 'Delete',
     registration_time: 'Registration Time',
     introduction: 'Introduction',
     input_phone: 'Please enter the correct cell phone number ',
@@ -45,6 +46,9 @@ export default {
     go_back: 'GO BACK',
     question_feedback: 'Question Feedback',
     add_user: 'ADD USER',
+    deselect: 'Deselect',
+    batch_delete: 'Batch delete',
+    No: 'No.',
   },
   router: {
     dashboard: 'Dashboard',

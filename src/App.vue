@@ -15,7 +15,6 @@ export default defineComponent({
     const { proxy } = getCurrentInstance();
     const p = reactive(proxy.$i18n.locale);
     let locale = ref(zhLocale);
-    console.log(p);
     watch(p, (newVal, oldVal) => {
       // console.log('打印变化前后的值', { oldVal, newVal });
       change();

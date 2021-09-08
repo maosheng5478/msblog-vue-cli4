@@ -2,7 +2,7 @@
   <el-card>
     <el-table :data="tableData">
       <el-table-column type="selection" width="55" />
-      <el-table-column type="index" width="50" />
+      <el-table-column type="index" width="50" :label="$t('message.No')" />
       <el-table-column property="id" label="id" />
       <el-table-column property="username" :label="$t('message.username')" />
       <el-table-column property="sex" :label="$t('message.sex')" />
@@ -18,30 +18,34 @@
             @click="editUser(scope.row)"
             type="text"
             size="small">
-            编辑
+            {{ $t('message.edit') }}
           </el-button>
           <el-button
             type="text"
             size="small">
-            移除
+            {{ $t('message.delete') }}
           </el-button>
         </template>
       </el-table-column>
     </el-table>
-    <div style="margin: 20px 0 20px 0;float: left">
-      <el-button>取消选择</el-button>
-      <el-button>批量删除</el-button>
+    <div class="form_bottom">
+      <div class="bot_btn">
+        <el-button size="small">{{ $t('message.deselect') }}</el-button>
+        <el-button size="small">{{ $t('message.batch_delete') }}</el-button>
+      </div>
+      <el-pagination
+        class="bot_page"
+        background
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-sizes="[5,10]"
+        :page-size="5"
+        :pager-count="5"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="100"
+      />
     </div>
-    <el-pagination
-      background
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      :current-page="currentPage4"
-      :page-sizes="[5,10]"
-      :page-size="100"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="100"
-    />
   </el-card>
 </template>
 
@@ -51,17 +55,35 @@ export default defineComponent({
   name: 'UserForm',
   props: {
     tableData: [],
+    currentPage: { type: Number, defualt: 1 }
   },
   setup() {
     const data = reactive({
     });
+    const handleSizeChange = function(size) {
+
+    };
+    const handleCurrentChange = function(val) {
+
+    };
     return {
       data,
+      handleSizeChange,
+      handleCurrentChange,
     };
   }
 });
 </script>
 
-<style>
-
+<style lang="scss">
+.form_bottom{
+  overflow:hidden;
+  padding: 10px 0 0;
+  .bot_btn{
+    float: left
+  }
+  .bot_page{
+    float: right;
+  }
+}
 </style>

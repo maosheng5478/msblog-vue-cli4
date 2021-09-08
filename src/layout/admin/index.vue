@@ -19,7 +19,7 @@
           <el-divider />
           <div style="padding: 10px">
             <router-view v-slot="{ Component }">
-              <transition name="el-fade-in" :duration="1000">
+              <transition name="el-fade-in" :duration="1500">
                 <keep-alive>
                   <component :is="Component" />
                 </keep-alive>
@@ -95,6 +95,9 @@ export default defineComponent({
   }
   .el-divider{
     margin: 2px 0;
+  }
+  .el-fade-in-leave-to{
+    display: none;
   }
 }
 .other_as{

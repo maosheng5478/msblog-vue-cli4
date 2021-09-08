@@ -8,7 +8,9 @@
     </el-header>
     <el-main class="c_main">
       <el-backtop visibility-height="5" />
-      <router-view />
+      <transition name="el-fade-in-linear" :duration="10000">
+        <router-view />
+      </transition>
     </el-main>
     <el-footer class="c_footer">
       <Footer />
