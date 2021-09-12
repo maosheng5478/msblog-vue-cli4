@@ -1,6 +1,6 @@
 <template>
   <el-card>
-    <el-table :data="tableData" stripe>
+    <el-table :data="tableData" stripe ref="tableRef">
       <el-table-column type="selection" width="55" />
       <el-table-column type="index" width="50" :label="$t('message.No')" />
       <el-table-column property="id" label="id" />
@@ -21,6 +21,7 @@
             {{ $t('message.edit') }}
           </el-button>
           <el-button
+            @click="deleteUser(scope.row)"
             type="text"
             size="small">
             {{ $t('message.delete') }}
@@ -30,8 +31,8 @@
     </el-table>
     <div class="form_bottom">
       <div class="bot_btn">
-        <el-button size="small">{{ $t('message.deselect') }}</el-button>
-        <el-button size="small">{{ $t('message.batch_delete') }}</el-button>
+        <el-button size="small" @click="handleDeselect">{{ $t('message.deselect') }}</el-button>
+        <el-button size="small" @click="handleDeleteList">{{ $t('message.batch_delete') }}</el-button>
       </div>
       <el-pagination
         class="bot_page"
@@ -50,14 +51,19 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, ref } from 'vue';
 export default defineComponent({
   name: 'UserForm',
   props: {
     tableData: [],
     currentPage: { type: Number, defualt: 1 }
   },
-  emits: ['sizeChange', 'currentPage'],
+  emits: [
+    'sizeChange',
+    'currentPage',
+    'edit',
+    'deleted'
+  ],
   setup(prop, { emit }) {
     const data = reactive({
       pagination: {
@@ -65,6 +71,7 @@ export default defineComponent({
         page: 1
       }
     });
+    const tableRef = ref();
     const handleSizeChange = function(size) {
       console.log(size);
       data.pagination.size = size;
@@ -75,10 +82,24 @@ export default defineComponent({
       console.log(data);
       emit('currentPage', data.pagination);
     };
+    const editUser = function (params) {
+      console.log(params);
+      emit('edit', params);
+    };
+    const deleteUser = function (params) {
+      emit('deleted', params.id);
+    };
+    const handleDeselect = function () {
+      tableRef.value.clearSelection();
+    };
     return {
       data,
       handleSizeChange,
       handleCurrentChange,
+      editUser,
+      deleteUser,
+      tableRef,
+      handleDeselect,
     };
   }
 });

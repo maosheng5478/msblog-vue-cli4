@@ -49,6 +49,7 @@ export default {
     deselect: '取消选择',
     batch_delete: '批量删除',
     No: '序号',
+    operation_success: '操作成功',
   },
   router: {
     dashboard: '首页',

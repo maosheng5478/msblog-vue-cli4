@@ -5,6 +5,8 @@
       :tableData="data.tableData"
       @currentPage="handleCurrentPage"
       @sizeChange="handleCurrentPage"
+      @edit="handleEdit"
+      @deleted="handleDelete"
       class="u_form" />
   </div>
 </template>
@@ -12,12 +14,15 @@
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
 import UserForm from './UserForm.vue';
-import { adminUserPage } from '@/api/admin/user-profile';
+import { adminUserPage, deletedUser } from '@/api/admin/user-profile';
 import { Enum } from '@/utils/enum';
+import { ElMessage } from 'element-plus';
+import { commonUse } from '@/utils/use';
 export default defineComponent({
   name: 'UserProfile',
   components: { UserForm },
   setup() {
+    const use = commonUse();
     const data = reactive({
       formShow: false,
       tableData: [],
@@ -31,12 +36,18 @@ export default defineComponent({
     };
     const handleUserpage = function (pagination) {
       data.pagination = pagination;
-      console.log(pagination);
       adminUserPage(data.pagination).then((res) => {
         data.tableData = res.list;
         data.tableData.forEach(item => {
           item.sex = Enum.sexEnum[item.sex];
           item.role = Enum.roleEnum[item.role];
+        });
+      });
+    };
+    const handleDelete = function (id) {
+      deletedUser({ id: id }).then(() => {
+        ElMessage.success({
+          message: use.t('message.operation_success'),
         });
       });
     };
@@ -51,6 +62,7 @@ export default defineComponent({
       handleAddUser,
       handleUserpage,
       handleCurrentPage,
+      handleDelete,
     };
   }
 });

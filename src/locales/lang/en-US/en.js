@@ -49,6 +49,7 @@ export default {
     deselect: 'Deselect',
     batch_delete: 'Batch delete',
     No: 'No.',
+    operation_success: 'Operation success',
   },
   router: {
     dashboard: 'Dashboard',
