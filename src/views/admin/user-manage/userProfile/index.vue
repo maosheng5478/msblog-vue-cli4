@@ -1,7 +1,11 @@
 <template>
   <div>
     <el-button type="success" size="small" @click="handleAddUser">{{ $t('message.add_user') }}</el-button>
-    <UserForm :tableData="data.tableData" class="u_form" />
+    <UserForm
+      :tableData="data.tableData"
+      @currentPage="handleCurrentPage"
+      @sizeChange="handleCurrentPage"
+      class="u_form" />
   </div>
 </template>
 
@@ -17,27 +21,36 @@ export default defineComponent({
     const data = reactive({
       formShow: false,
       tableData: [],
+      pagination: {
+        page: 1,
+        size: 5,
+      }
     });
     const handleAddUser = function () {
       data.formShow = true;
     };
-    const handleUserpage = function () {
-      adminUserPage().then((res) => {
+    const handleUserpage = function (pagination) {
+      data.pagination = pagination;
+      console.log(pagination);
+      adminUserPage(data.pagination).then((res) => {
         data.tableData = res.list;
         data.tableData.forEach(item => {
           item.sex = Enum.sexEnum[item.sex];
           item.role = Enum.roleEnum[item.role];
         });
-        console.log(res);
       });
     };
+    const handleCurrentPage = function (pagination) {
+      handleUserpage(pagination);
+    };
     onMounted(() => {
-      handleUserpage();
+      handleUserpage(data.pagination);
     });
     return {
       data,
       handleAddUser,
       handleUserpage,
+      handleCurrentPage,
     };
   }
 });

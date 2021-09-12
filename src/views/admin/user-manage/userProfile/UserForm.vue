@@ -1,6 +1,6 @@
 <template>
   <el-card>
-    <el-table :data="tableData">
+    <el-table :data="tableData" stripe>
       <el-table-column type="selection" width="55" />
       <el-table-column type="index" width="50" :label="$t('message.No')" />
       <el-table-column property="id" label="id" />
@@ -57,14 +57,23 @@ export default defineComponent({
     tableData: [],
     currentPage: { type: Number, defualt: 1 }
   },
-  setup() {
+  emits: ['sizeChange', 'currentPage'],
+  setup(prop, { emit }) {
     const data = reactive({
+      pagination: {
+        size: 5,
+        page: 1
+      }
     });
     const handleSizeChange = function(size) {
-
+      console.log(size);
+      data.pagination.size = size;
+      emit('currentPage', data.pagination);
     };
-    const handleCurrentChange = function(val) {
-
+    const handleCurrentChange = function(page) {
+      data.pagination.page = page;
+      console.log(data);
+      emit('currentPage', data.pagination);
     };
     return {
       data,
