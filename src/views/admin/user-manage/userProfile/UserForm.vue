@@ -5,13 +5,19 @@
       <el-table-column type="index" width="50" :label="$t('message.No')" />
       <el-table-column property="id" label="id" />
       <el-table-column property="username" :label="$t('message.username')" />
-      <el-table-column property="sex" :label="$t('message.sex')" />
+      <el-table-column
+        property="sex"
+        :label="$t('message.sex')"
+        width="60"
+        align="center"
+      />
       <el-table-column property="email" :label="$t('message.email')" />
       <el-table-column property="phone" :label="$t('message.phone')" />
       <el-table-column property="role" :label="$t('message.role')" />
       <el-table-column
         :label="$t('message.operation')"
         fixed="right"
+        align="center"
         width="120">
         <template #default="scope">
           <el-button
@@ -56,7 +62,7 @@ export default defineComponent({
   name: 'UserForm',
   props: {
     tableData: [],
-    currentPage: { type: Number, defualt: 1 }
+    currentPage: { type: Number, default: 1 }
   },
   emits: [
     'sizeChange',
@@ -73,17 +79,14 @@ export default defineComponent({
     });
     const tableRef = ref();
     const handleSizeChange = function(size) {
-      console.log(size);
       data.pagination.size = size;
       emit('currentPage', data.pagination);
     };
     const handleCurrentChange = function(page) {
       data.pagination.page = page;
-      console.log(data);
       emit('currentPage', data.pagination);
     };
     const editUser = function (params) {
-      console.log(params);
       emit('edit', params);
     };
     const deleteUser = function (params) {
@@ -91,6 +94,11 @@ export default defineComponent({
     };
     const handleDeselect = function () {
       tableRef.value.clearSelection();
+    };
+    const handleDeleteList = function () {
+      const selection = tableRef.value.selection;
+      console.log(selection);
+      console.log(tableRef.value.select);
     };
     return {
       data,
@@ -100,6 +108,7 @@ export default defineComponent({
       deleteUser,
       tableRef,
       handleDeselect,
+      handleDeleteList,
     };
   }
 });
