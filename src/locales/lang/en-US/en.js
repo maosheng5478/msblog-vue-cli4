@@ -50,6 +50,7 @@ export default {
     batch_delete: 'Batch delete',
     No: 'No.',
     operation_success: 'Operation success',
+    no_data_selected: 'No data selected',
   },
   router: {
     dashboard: 'Dashboard',

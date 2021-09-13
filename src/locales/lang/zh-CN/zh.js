@@ -50,6 +50,7 @@ export default {
     batch_delete: '批量删除',
     No: '序号',
     operation_success: '操作成功',
+    no_data_selected: '未选中任何数据',
   },
   router: {
     dashboard: '首页',

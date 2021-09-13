@@ -1,6 +1,10 @@
 <template>
   <el-card>
-    <el-table :data="tableData" stripe ref="tableRef">
+    <el-table
+      :data="tableData"
+      stripe
+      ref="tableRef"
+      @selection-change="handleSelectChange">
       <el-table-column type="selection" width="55" />
       <el-table-column type="index" width="50" :label="$t('message.No')" />
       <el-table-column property="id" label="id" />
@@ -57,7 +61,10 @@
 </template>
 
 <script>
+import { ElMessage } from 'element-plus';
 import { defineComponent, reactive, ref } from 'vue';
+import { commonUse } from '@/utils/use';
+import { deleteList } from '@/api/admin/user-profile';
 export default defineComponent({
   name: 'UserForm',
   props: {
@@ -68,13 +75,18 @@ export default defineComponent({
     'sizeChange',
     'currentPage',
     'edit',
-    'deleted'
+    'deleted',
+    'deletedList'
   ],
   setup(prop, { emit }) {
+    const use = commonUse();
     const data = reactive({
       pagination: {
         size: 5,
         page: 1
+      },
+      selection: {
+        idList: []
       }
     });
     const tableRef = ref();
@@ -96,9 +108,24 @@ export default defineComponent({
       tableRef.value.clearSelection();
     };
     const handleDeleteList = function () {
-      const selection = tableRef.value.selection;
-      console.log(selection);
-      console.log(tableRef.value.select);
+      if (data.selection.idList.length === 0) {
+        ElMessage.warning({
+          message: use.t('message.no_data_selected'),
+        });
+      } else {
+        deleteList(data.selection).then(() => {
+          ElMessage.success({
+            message: use.t('operation_success'),
+          });
+          emit('deletedList');
+        });
+      }
+    };
+    const handleSelectChange = function (select) {
+      data.selection.idList = [];
+      select.forEach(element => {
+        data.selection.idList.push(element.id);
+      });
     };
     return {
       data,
@@ -109,6 +136,7 @@ export default defineComponent({
       tableRef,
       handleDeselect,
       handleDeleteList,
+      handleSelectChange,
     };
   }
 });

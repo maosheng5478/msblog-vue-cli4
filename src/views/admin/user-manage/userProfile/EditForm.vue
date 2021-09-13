@@ -85,8 +85,12 @@
 <script>
 import { defineComponent, reactive, ref } from 'vue';
 import { isName } from '@/utils/validate';
+import Props from './props';
 export default defineComponent({
   name: 'EditForm',
+  props: {
+    ...Props,
+  },
   setup() {
     const data = reactive({
 

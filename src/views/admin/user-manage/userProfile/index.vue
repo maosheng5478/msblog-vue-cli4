@@ -1,26 +1,27 @@
 <template>
   <div>
     <el-button type="success" size="small" @click="handleAddUser">{{ $t('message.add_user') }}</el-button>
-    <UserForm
+    <UserTable
       :tableData="data.tableData"
       @currentPage="handleCurrentPage"
       @sizeChange="handleCurrentPage"
       @edit="handleEdit"
       @deleted="handleDelete"
+      @deletedList="handleDeleteList"
       class="u_form" />
   </div>
 </template>
 
 <script>
 import { defineComponent, onMounted, reactive } from 'vue';
-import UserForm from './UserForm.vue';
+import UserTable from './UserTable.vue';
 import { adminUserPage, deletedUser } from '@/api/admin/user-profile';
 import { Enum } from '@/utils/enum';
 import { ElMessage } from 'element-plus';
 import { commonUse } from '@/utils/use';
 export default defineComponent({
   name: 'UserProfile',
-  components: { UserForm },
+  components: { UserTable },
   setup() {
     const use = commonUse();
     const data = reactive({
@@ -54,6 +55,9 @@ export default defineComponent({
     const handleCurrentPage = function (pagination) {
       handleUserpage(pagination);
     };
+    const handleDeleteList = function () {
+      handleUserpage(data.pagination);
+    };
     onMounted(() => {
       handleUserpage(data.pagination);
     });
@@ -63,6 +67,7 @@ export default defineComponent({
       handleUserpage,
       handleCurrentPage,
       handleDelete,
+      handleDeleteList,
     };
   }
 });

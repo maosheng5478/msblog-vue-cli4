@@ -29,11 +29,6 @@
         <el-col :span="18" class="text_el-col name-font" />
         <el-col :span="2" class="text_el-col name-font">
           <el-button type="text" icon="el-icon-edit" @click="data.dialogFormVisible = true">{{ $t('message.edit') }}</el-button>
-          <user-edit-form
-            :title="use.t('message.edit_info')"
-            v-model="data.dialogFormVisible"
-            :form-data="data.formData"
-            @close-form="data.dialogFormVisible = false" />
         </el-col>
       </el-row>
       <!-- 分割线 -->
@@ -79,6 +74,11 @@
         </el-col>
       </el-row>
     </el-card>
+    <user-edit-form
+      :title="use.t('message.edit_info')"
+      v-model="data.dialogFormVisible"
+      :form-data="data.formData"
+      @close-form="data.dialogFormVisible = false" />
   </div>
 </template>
 
@@ -124,7 +124,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .ui_banner{
   height: 100vh;
   overflow: hidden;
